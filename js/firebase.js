@@ -1,8 +1,8 @@
-(function(){
-    'use strict'
+(function () {
+  'use strict'
 
-    console.log('Lets try this');
-    const saveButton = document.getElementById('saveCategory');
+  console.log('Lets try this');
+  const saveButton = document.getElementById('saveCategory');
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -22,14 +22,14 @@
 
 })();
 
-function saveCategory(){
-    const categoryName = document.getElementById('category').value;
-    const category = {'categoryName': categoryName};
+function saveCategory() {
+  const categoryName = document.getElementById('category').value;
+  const category = { 'categoryName': categoryName };
 
-    firebase.database()
+  firebase.database()
     .ref(`category/${category.categoryName}`)
     .set(category)
-    
-    console.log('Category saved');
-    console.log(category);
+
+  console.log('Category saved');
+  console.log(category);
 }
