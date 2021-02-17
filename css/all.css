@@ -1,0 +1,44 @@
+/* input shadow change color */
+
+.form-input:focus {
+    border-color: #5a2d82;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(90, 45, 130, 0.5);
+}
+
+
+/* Confirm Button purple */
+
+.form-btn {
+    background-color: #5a2d82;
+    color: white;
+}
+
+.form-btn:hover {
+    background-color: #7d41b1;
+}
+
+
+/* Checkbox stylizer */
+
+.custom-control-label:before {
+    background-color: white;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #5a2d82;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+}
+
+.custom-control-input:active~.custom-control-label::before {
+    background-color: green;
+}
+
+
+/** focus shadow pinkish **/
+
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(90, 45, 130, 0.25);
+}
