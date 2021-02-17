@@ -1,5 +1,5 @@
-(function(){
-    'use strict'
+(function () {
+  'use strict'
 
     console.log('Lets try this');
 
@@ -30,7 +30,7 @@ function saveCategory(){
                         'dateTime': now,
                     };
 
-    firebase.database()
+  firebase.database()
     .ref(`category/${category.categoryName}`)
     .set(category);
     
@@ -68,4 +68,5 @@ function getCategories(){
             tableBody.appendChild(tr);
         });
     });
+
 }
