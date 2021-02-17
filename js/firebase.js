@@ -2,7 +2,6 @@
     'use strict'
 
     console.log('Lets try this');
-    const saveButton = document.getElementById('saveCategory');
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -19,17 +18,54 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-
+ 
 })();
 
 function saveCategory(){
     const categoryName = document.getElementById('category').value;
-    const category = {'categoryName': categoryName};
+    //const date = new Date();
+    const now = new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0].replace('T',' ');
+    const category = {
+                        'categoryName': categoryName,
+                        'dateTime': now,
+                    };
 
     firebase.database()
     .ref(`category/${category.categoryName}`)
-    .set(category)
+    .set(category);
     
     console.log('Category saved');
     console.log(category);
+}
+
+function getCategories(){
+    const tableBody = document.getElementById("categoryBody");
+    const categoryRef = firebase.database().ref('category/');
+    let counter = 1;
+
+    categoryRef.once('value', function(snapshot){
+        snapshot.forEach(function(childSnapshot) {
+            let tr = document.createElement("tr");
+            let childKey = childSnapshot.key;
+            let childData = childSnapshot.val();
+            
+            let tdIndex = document.createElement("td");
+            tdIndex.innerHTML = counter++;
+            tr.appendChild(tdIndex);
+
+            let tdName = document.createElement("td");
+            tdName.innerHTML = childKey;
+            tr.appendChild(tdName);
+
+            let tdDate = document.createElement("td");
+            tdDate.innerHTML = childData["dateTime"];
+            tr.appendChild(tdDate);
+
+            let tdDelete = document.createElement("td");
+            tdDelete.innerHTML = '<i class="bi-trash-fill"></i>';
+            tr.appendChild(tdDelete);
+
+            tableBody.appendChild(tr);
+        });
+    });
 }
