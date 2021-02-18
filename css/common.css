@@ -1,0 +1,17 @@
+.table-container{
+    margin: 35px 60px 35px 60px;
+}
+
+.table-title span{
+    font-size: x-large;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.add-button{
+    text-align: right;
+}
+
+/* .table_container div{
+    text-align: right;
+} */

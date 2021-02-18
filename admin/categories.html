@@ -1,59 +1,138 @@
 <html>
-  <head>
-    <!-- CSS framework -->
-    <!-- Bootstrap -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- Firebase -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+<head>
+  <!-- CSS framework -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/forms.css" />
-  </head>
-  <body>
-    <div>
-      <div>
-          <a href="add-category.html">New</a>
+  <!-- Firebase -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/common.css" />
+</head>
+
+<body>
+  <div class="container table-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 table-title"><span>Category</span></div>
+        <div class="col-2 add-button"><a class="btn btn-primary role=" button" data-toggle ="modal" data-target = "#newCategory" href="#">New</a></div>
       </div>
-      <table id="category" class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Category Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody id="categoryBody">
-
-        </tbody>
-      </table>
     </div>
-  </body>
+    <table id="category" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody id="categoryBody">
+
+      </tbody>
+    </table>
+
+  <!-- Modal Status-->
+  <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you want to change the status of this item?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateStatus()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal New Category-->
+  <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="newCategory"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="categoryInput" aria-describedby="categoryHelp" placeholder="Category Name">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveCategory()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../js/firebase.js"></script>
   <script>
+
+    // var arr = [
+    //   {
+    //     name: 'John Z'
+    //   },
+    //   {
+    //     name: 'Jose Marmolejos'
+    //   },
+    //   {
+    //     name: 'Albert Danison'
+    //   },
+    //   {
+    //     name: 'Gricel Alvarez'
+    //   },
+    // ]
+    
+
+    // arr.sort((a, b) => a.name.split()[1] > b.name.split()[1] ? 1 : -1);
+    // //arr.sort((a, b) => a.name > b.name ? 1 : -1);
+    //                 //arr.sort((a, b) => a.name > b.name ? 1 : -1);
+    // console.log(arr);
+
+    let elementId = ''; 
     getCategories();
+
+    function showStatusModal(rowId){
+      elementId = rowId;
+    }
+
+    function updateStatus(){
+      changeCategoryStatus(elementId);
+    }
+
+    
     // //Adding click event
     // const saveButton = document.getElementById('saveCategory');
     // saveButton.addEventListener("click", function(e){
     //     saveCategory();
     // });
   </script>
+
+</body>
+
+
 </html>
