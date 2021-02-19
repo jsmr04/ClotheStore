@@ -39,11 +39,11 @@
                 </tr>
             </thead>
             <tbody id="productBody">
-
+                <!-- Dynamic rows -->
             </tbody>
         </table>
 
-        <!-- Modal New Category-->
+        <!-- Modal New Product-->
         <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -56,50 +56,65 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <div class="mb-3">
-                                <label for="productIdInput" class="form-label">ID</label>
-                                <input maxlength="10" type="text" class="form-control" id="productIdInput"
-                                    aria-describedby="productHelp" placeholder="Product id">
-                            </div>
-                            <div class="mb-3">
-                                <label for="productNameInput" class="form-label">Name</label>
-                                <input maxlength="30" type="text" class="form-control" id="productNameInput"
-                                    aria-describedby="productHelp" placeholder="Product name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="productCatSelect" class="form-label">Category</label>
-                                <select type="text" class="form-control" id="productCatSelect"
-                                    aria-describedby="productHelp">
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productDescInput" class="form-label">Description</label>
-                                <textarea type="text" rows="3" class="form-control" id="productDescInput"
-                                placeholder="Add a description">
-                                </textarea>
-                            </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="productPriceInput" class="form-label">Price</label>
-                                    <input maxlength="10" type="number" class="form-control" id="productPriceInput"
-                                        aria-describedby="productHelp" placeholder="$">
+                            <form class="needs-validation" novalidate>
+                                <div class="mb-3">
+                                    <label for="productIdInput" class="form-label">ID</label>
+                                    <div class="input-group">
+                                        <input maxlength="10" type="text" class="form-control" id="productIdInput"
+                                            aria-describedby="productHelp" placeholder="Product id" required>
+                                        <div class="invalid-feedback">
+                                            Required
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col mb-3">
-                                    <label for="productStockInput" class="form-label">Stock</label>
-                                    <input maxlength="10" type="number" class="form-control" id="productStockInput"
-                                        aria-describedby="productHelp" placeholder="Inventory">
+                                <div class="mb-3">
+                                    <label for="productNameInput" class="form-label">Name</label>
+                                    <input maxlength="30" type="text" class="form-control" id="productNameInput"
+                                        aria-describedby="productHelp" placeholder="Product name">
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="productCatSelect" class="form-label">Category</label>
+                                    <select type="text" class="form-control" id="productCatSelect"
+                                        aria-describedby="productHelp">
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productDescInput" class="form-label">Description</label>
+                                    <textarea type="text" rows="3" class="form-control" id="productDescInput"
+                                        placeholder="Add a description"></textarea>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="productPriceInput" class="form-label">Price</label>
+                                        <input maxlength="10" type="number" class="form-control" id="productPriceInput"
+                                            aria-describedby="productHelp" placeholder="$">
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label for="productStockInput" class="form-label">Stock</label>
+                                        <input maxlength="10" type="number" class="form-control" id="productStockInput"
+                                            aria-describedby="productHelp" placeholder="Inventory">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productStockInput" class="form-label">Picture</label>
+                                    <input id="productPictureInput" class="form-control" type="file" accept="image/png, image/jpeg" readonly>
+                                </div>
+
+                                <div id="list-pics">
+                                    
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveProduct()">Save</button>
+                                </div>
+
+                            </form>
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"
-                            onclick="saveProduct()">Save</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -117,22 +132,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/firebase.js"></script>
-    <script>
-
-        // let elementId = ''; 
-        getProducts();
-        fillCategoriesDropdown() 
-    // function showStatusModal(rowId){
-    //   elementId = rowId;
-    // }
-
-    // function updateStatus(){
-    //   changeCategoryStatus(elementId);
-    // }
-
-    </script>
+    <script type="text/javascript" src="../js/product.js"></script>
 
 </body>
-
-
 </html>
