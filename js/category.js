@@ -1,3 +1,13 @@
+let elementId = ''; 
+getCategories();
+
+function showStatusModal(rowId){
+  elementId = rowId;
+}
+
+function updateStatus(){
+  changeCategoryStatus(elementId);
+}
 
 function saveCategory() {
     const categoryName = document.getElementById("categoryInput").value;

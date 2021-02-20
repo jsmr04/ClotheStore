@@ -22,8 +22,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 table-title"><span>Product</span></div>
-                <div class="col-2 add-button"><a class="btn btn-primary role=" button" data-toggle="modal"
-                        data-target="#newCategory" href="#">New</a></div>
+                <div class="col-2 add-button">
+                    <a class="btn btn-primary role=" button" data-toggle="modal"
+                        data-target="#modal-product" href="#" onclick="newProduct()" 
+                        data-bs-toggle="tooltip" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">New</a>
+                    </div>
             </div>
         </div>
         <table id="product" class="table table-striped">
@@ -36,6 +39,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Status</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody id="productBody">
@@ -43,8 +47,31 @@
             </tbody>
         </table>
 
+        <!-- Modal Status-->
+        <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to change the status of this item?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            onclick="updateStatus()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Modal New Product-->
-        <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
+        <div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="modalTitle"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -98,23 +125,25 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="productStockInput" class="form-label">Picture</label>
-                                    <input id="productPictureInput" class="form-control" type="file" accept="image/png, image/jpeg" readonly>
+                                    <input id="productPictureInput" class="form-control" type="file"
+                                        accept="image/png, image/jpeg" readonly>
                                 </div>
 
                                 <div id="list-pics">
-                                    
+
                                 </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveProduct()">Save</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                        onclick="saveProduct()">Save</button>
                                 </div>
 
                             </form>
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -135,4 +164,5 @@
     <script type="text/javascript" src="../js/product.js"></script>
 
 </body>
+
 </html>
