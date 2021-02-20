@@ -90,3 +90,12 @@ body {
 .form-img {
     border-radius: 1em;
 }
+
+
+.form-register {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: 0 auto;
+    padding-bottom: 110px;
+}
