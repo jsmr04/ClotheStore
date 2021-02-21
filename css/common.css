@@ -1,16 +1,31 @@
-.table-container{
+.table a,
+.table i {
+    color: #5a2d82 !important;
+}
+
+.table-container {
     margin: 35px 60px 35px 60px;
 }
 
-.table-title span{
+.table-title span {
     font-size: x-large;
     font-style: italic;
     font-weight: bold;
 }
 
-.add-button{
+.add-button {
     text-align: right;
 }
+
+.btn-primary {
+    background-color: #5a2d82 !important;
+    border-color: #5a2d82 !important;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.2rem rgb(90 45 130 / 25%) !important;
+}
+
 
 /* .table_container div{
     text-align: right;

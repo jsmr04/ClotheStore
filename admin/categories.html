@@ -1,96 +1,157 @@
 <html>
 
 <head>
-  <!-- CSS framework -->
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Jhason">
+    <link rel="icon" href="../media/favicon.png">
 
-  <!-- Firebase -->
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <title>Admin - Categories</title>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="../css/common.css" />
+    <!-- CSS framework -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+
+
+
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/common.css" />
+
+    <!-- Menu CSS-->
+    <link type="text/css" href="../css/menu-admin.css" rel="stylesheet">
+    <link type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
-  <div class="container table-container">
-    <div class="container">
-      <div class="row">
-        <div class="col-10 table-title"><span>Category</span></div>
-        <div class="col-2 add-button"><a class="btn btn-primary role=" button" data-toggle ="modal" data-target = "#newCategory" href="#">New</a></div>
-      </div>
-    </div>
-    <table id="category" class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Date</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody id="categoryBody">
 
-      </tbody>
-    </table>
+    <nav class="navbar navbar-expand-lg menu-top">
+        <div class="container-fluid">
+            <a class="navbar-brand menu-title" href="#"><b>Admin Panel</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Statistics</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Management
+              </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../admin/categories.html">Categories</a></li>
+                            <li><a class="dropdown-item" href="../admin/products.html">Products</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Costumers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="menu-cart" href="#">
+                            <i class="fas fa-user menu-cart-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="#">My Account</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container table-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 table-title"><span>Category</span></div>
+                <div class="col-2 add-button">
+                    <a class="btn btn-primary role=" button " data-toggle ="modal " data-target = "#newCategory " href="# ">New</a>
+                </div>
+            </div>
+        </div>
+        <table id="category " class="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col ">#</th>
+              <th scope="col ">Name</th>
+              <th scope="col ">Date</th>
+              <th scope="col ">Status</th>
+            </tr>
+          </thead>
+          <tbody id="categoryBody ">
+
+          </tbody>
+        </table>
 
   <!-- Modal Status-->
-  <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal fade " id="changeStatusModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel "
+          aria-hidden="true ">
+          <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+              <div class="modal-header ">
+                <h5 class="modal-title " id="exampleModalLabel ">Change Status</h5>
+                <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                  <span aria-hidden="true ">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body ">
+                Do you want to change the status of this item?
+              </div>
+              <div class="modal-footer ">
+                <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                <button type="button " class="btn btn-primary " data-dismiss="modal " onclick="updateStatus() ">Yes</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          Do you want to change the status of this item?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateStatus()">Yes</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal New Category-->
-  <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="newCategory"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal fade " id="newCategory " tabindex="-1 " role="dialog " aria-labelledby="newCategory "
+          aria-hidden="true ">
+          <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+              <div class="modal-header ">
+                <h5 class="modal-title " id="exampleModalLabel ">New Category</h5>
+                <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                  <span aria-hidden="true ">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body ">
+                <input type="text " class="form-control " id="categoryInput " aria-describedby="categoryHelp " placeholder="Category Name ">
+              </div>
+              <div class="modal-footer ">
+                <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                <button type="button " class="btn btn-primary " data-dismiss="modal " onclick="saveCategory() ">Save</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          <input type="text" class="form-control" id="categoryInput" aria-describedby="categoryHelp" placeholder="Category Name">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveCategory()">Save</button>
-        </div>
-      </div>
     </div>
-  </div>
-
-  </div>
 
   
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../js/firebase.js"></script>
-  <script type="text/javascript" src="../js/category.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js " integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0 " crossorigin="anonymous "></script>
+  <script type="text/javascript " src="../js/firebase.js "></script>
+  <script type="text/javascript " src="../js/category.js "></script>
   <script>
   </script>
 
