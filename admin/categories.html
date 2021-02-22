@@ -167,9 +167,7 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -178,7 +176,7 @@
                         <div class="card-header py-3">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">Category Overview</h6>
-                                <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#newCategory" href="#"><i class="fa fa-plus icon"></i> New</a>
+                                <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#modal-category" href="#"><i class="fa fa-plus icon"></i> New</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -187,17 +185,21 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Date</th>
                                             <th>Status</th>
+                                            <th class="no-sort"></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
+                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Date</th>
                                             <th>Status</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="categoryBody">
@@ -274,11 +276,11 @@
     </div>
 
     <!-- Modal New Category-->
-    <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="newCategory" aria-hidden="true">
+    <div class="modal fade" id="modal-category" tabindex="-1" role="dialog" aria-labelledby="newCategory" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="categoryTitle">New Category</h5>
+                    <h5 class="modal-title" id="modalTitle">New Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

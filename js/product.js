@@ -1,3 +1,7 @@
+$('#modal-product').on('shown.bs.modal', function() {
+    $(this).find('input:first').focus();
+});
+
 class Product {
     constructor(
         id,
@@ -48,12 +52,11 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 function fillCategoriesDropdown() {
     const categorySelect = document.getElementById("productCatSelect");
     const categoryRef = firebase.database().ref("category/");
-    let counter = 1;
 
     categoryRef.once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             let option = document.createElement("option");
-            option.innerHTML = childSnapshot.key;
+            option.innerHTML = childSnapshot.val()["categoryName"];
 
             if (childSnapshot.val()["active"]) {
                 categorySelect.appendChild(option);
@@ -162,17 +165,14 @@ function getProducts() {
 
         //This script below enables the Jquery to work properly(search, filter, pagination)
         $(document).ready(function() {
-            $('#dataTable').DataTable({
-                'aoColumnDefs': [{
-                    'bSortable': false,
-                    'aTargets': ['no-sort'] /* 1st one, start by the right */
-                }]
-            });
+            $('#dataTable').DataTable();
         });
     });
 }
 
 function editProduct(index) {
+    document.getElementById("modalTitle").innerHTML = "Update Product";
+
     let idInput = document.getElementById("productIdInput");
     let nameInput = document.getElementById("productNameInput");
     let categoryInput = document.getElementById("productCatSelect");
@@ -192,13 +192,22 @@ function editProduct(index) {
     stockInput.value = products[productIndex].stock;
 
     //Copying pictures into temp array
-    pictures = [];
-    products[productIndex].pictures.forEach((p) => {
-        pictures.push({...p }); //Cloning objects 
-    });
 
-    //Now let's show image name
-    showPictureName();
+    console.log(products[productIndex].pictures);
+    if (products[productIndex].pictures != undefined) {
+        pictures = [];
+        products[productIndex].pictures.forEach((p) => {
+            pictures.push({...p }); //Cloning objects 
+        });
+        //Now let's show image name
+        showPictureName();
+    } else {
+        let pictureContainer = document.getElementById("list-pics");
+        pictureContainer.innerHTML = "";
+    }
+
+
+
 }
 
 function saveProduct() {
