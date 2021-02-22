@@ -34,11 +34,12 @@ let products = [];
 let pictures = [];
 let productIndex = -1;
 let editMode = false;
+let categories = [];
 
 
-
-getProducts();
 fillCategoriesDropdown();
+getProducts();
+
 
 // Check for the File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -61,8 +62,10 @@ function fillCategoriesDropdown() {
             if (childSnapshot.val()["active"]) {
                 categorySelect.appendChild(option);
             }
+            categories.push({ name: childSnapshot.val()["categoryName"], id: childSnapshot.key })
         });
     });
+    console.log(categories);
 }
 
 function getProducts() {
@@ -95,7 +98,8 @@ function getProducts() {
             tr.appendChild(tdName);
 
             let tdCategory = document.createElement("td");
-            tdCategory.innerHTML = childData["category"];
+            let cat = getCategoryName(childData["category"]);
+            tdCategory.innerHTML = cat;
             tr.appendChild(tdCategory);
 
             let tdPrice = document.createElement("td");
@@ -140,7 +144,7 @@ function getProducts() {
             //Creating list of products
             let id = childKey;
             let name = childData["name"];
-            let category = childData["category"];
+            let category = getCategoryName(childData["category"]);
             let description = childData["description"];
             let price = childData["price"];
             let stock = childData["stock"];
@@ -205,16 +209,13 @@ function editProduct(index) {
         let pictureContainer = document.getElementById("list-pics");
         pictureContainer.innerHTML = "";
     }
-
-
-
 }
 
 function saveProduct() {
 
     let id = document.getElementById("productIdInput").value;
     let name = document.getElementById("productNameInput").value;
-    let category = document.getElementById("productCatSelect").value;
+    let category = getCategoryId(document.getElementById("productCatSelect").value);
     let description = document.getElementById("productDescInput").value;
     let price = Number(document.getElementById("productPriceInput").value);
     let stock = Number(document.getElementById("productStockInput").value);
@@ -352,4 +353,27 @@ function newProduct() {
     pictures = [];
 
     console.log('here');
+}
+
+
+function getCategoryId(name) {
+    console.log("Inside getcategory: " + name);
+    for (x = 0; x < categories.length; x++) {
+        console.log("Inside getcategoryIDFor: " + categories[x].name);
+        if (categories[x].name == name) {
+            console.log("Inside getcategoryIDForCorrect: " + categories[x].id);
+            return categories[x].id;
+        }
+    }
+}
+
+function getCategoryName(id) {
+    console.log("Inside getcategoryID: " + id);
+    for (x = 0; x < categories.length; x++) {
+        console.log("Inside getcategoryIDFor: " + categories[x].id);
+        if (categories[x].id == id) {
+            console.log("Inside getcategoryIDForCorrect: " + categories[x].name);
+            return categories[x].name;
+        }
+    }
 }

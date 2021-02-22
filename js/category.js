@@ -127,6 +127,12 @@ function saveCategory() {
     document.getElementById("categoryInput").value = '';
 }
 
+function newCategory() {
+    document.getElementById("modalTitle").innerHTML = "New Category";
+    document.getElementById("categoryInput").value = ""
+    editMode = false;
+}
+
 
 function changeCategoryStatus(elementId) {
     const row = document.getElementById(elementId);
