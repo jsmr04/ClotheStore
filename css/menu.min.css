@@ -26,7 +26,7 @@
     --white: #fff;
     --gray: #858796;
     --gray-dark: #5a5c69;
-    --primary: #4e73df;
+    --primary: #5a2d82;
     --secondary: #858796;
     --success: #1cc88a;
     --info: #36b9cc;
@@ -175,13 +175,13 @@ sup {
 }
 
 a {
-    color: #4e73df;
+    color: #5a2d82;
     text-decoration: none;
     background-color: transparent
 }
 
 a:hover {
-    color: #224abe;
+    color: #5a2d82;
     text-decoration: underline
 }
 
@@ -5007,7 +5007,7 @@ input[type=submit].btn-block {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #4e73df;
+    color: #5a2d82;
     background-color: #fff;
     border: 1px solid #dddfeb
 }
@@ -5040,8 +5040,8 @@ input[type=submit].btn-block {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #4e73df;
-    border-color: #4e73df
+    background-color: #5a2d82;
+    border-color: #5a2d82
 }
 
 .page-item.disabled .page-link {
@@ -10017,8 +10017,8 @@ a.text-dark:hover {
 
 @media print {
     *,
-    ::after,
-    ::before {
+     ::after,
+     ::before {
         text-shadow: none!important;
         box-shadow: none!important
     }
