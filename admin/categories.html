@@ -107,14 +107,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Sales by category</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Sales by product</span></a>
             </li>
@@ -174,29 +174,6 @@
                 <!-- End of Topbar -->
 
                 <div class="container-fluid">
-
-                    <!-- <div class="container">
-                        <div class="row">
-                            <div class="col-10 table-title"><span>Category</span></div>
-                            <div class="col-2 add-button">
-                                <a class="btn btn-primary" role= "button" data-toggle ="modal" data-target = "#newCategory" href="#">New</a>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- <table id="category" class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody id="categoryBody">
-
-                      </tbody>
-                    </table> -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -224,7 +201,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody id="categoryBody">
-
+                                        <!-- Dynamic rows -->
                                     </tbody>
                                 </table>
                             </div>
@@ -330,7 +307,7 @@
     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Category Core Data-->
+    <!-- Category Core Data -->
     <script src="../js/firebase.js"></script>
     <script src="../js/category.js"></script>
 </body>

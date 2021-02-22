@@ -76,9 +76,9 @@ function getCategories() {
             tdStatus.appendChild(aStatus);
             tr.appendChild(tdStatus);
 
-            // let tdDelete = document.createElement("td");
-            // tdDelete.innerHTML = '<i class="bi-trash-fill"></i>';
-            // tr.appendChild(tdDelete);
+            //let tdDelete = document.createElement("td");
+            //tdDelete.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            //tr.appendChild(tdDelete);
 
             //This script below enables the Jquery to work properly(search, filter, pagination)
             $(document).ready(function() {
