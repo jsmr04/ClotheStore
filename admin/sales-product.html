@@ -7,7 +7,7 @@
     <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Jhason">
     <link rel="icon" href="../media/favicon.png">
 
-    <title>Admin - Products</title>
+    <title>Admin - Resport Product</title>
 
     <!-- CSS framework -->
 
@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="../admin/home.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -68,7 +68,7 @@
             </li>
 
             <!-- Nav Item - products -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="../admin/products.html">
                     <i class="fab fa-fw fa-product-hunt"></i>
                     <span>Products</span>
@@ -113,7 +113,7 @@
             </li>
 
             <!-- Nav Item - Sales by Product -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="../admin/sales-product.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Sales by product</span></a>
@@ -173,47 +173,7 @@
                 <!-- End of Topbar -->
 
                 <div class="container-fluid">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Products Overview</h6>
-                                <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#modal-product" href="#" onclick="newProduct()"><i class="fa fa-plus icon"></i> New</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Price</th>
-                                            <th>Stock</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Price</th>
-                                            <th>Stock</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody id="productBody">
-                                        <!-- Dynamic rows -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -259,93 +219,6 @@
         </div>
     </div>
 
-    <!-- Modal Status-->
-    <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    Do you want to change the status of this item?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateStatus()">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal New Product-->
-    <div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">New Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <form class="needs-validation" novalidate>
-                            <div class="mb-3">
-                                <label for="productIdInput" class="form-label">ID</label>
-                                <div class="input-group">
-                                    <input maxlength="10" type="text" class="form-control" id="productIdInput" aria-describedby="productHelp" placeholder="Product id" required>
-                                    <div class="invalid-feedback">
-                                        Required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productNameInput" class="form-label">Name</label>
-                                <input maxlength="30" type="text" class="form-control" id="productNameInput" aria-describedby="productHelp" placeholder="Product name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="productCatSelect" class="form-label">Category</label>
-                                <select class="form-control" id="productCatSelect" aria-describedby="productHelp">
-                                    </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productDescInput" class="form-label">Description</label>
-                                <textarea rows="3" class="form-control" id="productDescInput" placeholder="Add a description"></textarea>
-                            </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="productPriceInput" class="form-label">Price</label>
-                                    <input type="number" class="form-control" id="productPriceInput" aria-describedby="productHelp" placeholder="$">
-                                </div>
-                                <div class="col mb-3">
-                                    <label for="productStockInput" class="form-label">Stock</label>
-                                    <input type="number" class="form-control" id="productStockInput" aria-describedby="productHelp" placeholder="Inventory">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productStockInput" class="form-label">Picture</label>
-                                <input id="productPictureInput" class="form-control" type="file" accept="image/png, image/jpeg" readonly>
-                            </div>
-
-                            <div id="list-pics">
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveProduct()">Save</button>
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -363,7 +236,7 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
-    <script src="../js/product.js"></script>
+
 
 </body>
 
