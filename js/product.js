@@ -319,7 +319,15 @@ function updateStatus() {
     //Changing status
     if (productIndex >= 0) {
         products[productIndex].active = !products[productIndex].active;
+        console.log('Changing status');
+        console.log(products[productIndex]);
 
+        if (products[productIndex].pictures == undefined){
+            products[productIndex].pictures = [];
+        }
+        
+        products[productIndex].category = getCategoryId(products[productIndex].category);
+        
         firebase
             .database()
             .ref(`product/${products[productIndex].id}`)
