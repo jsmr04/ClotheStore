@@ -136,13 +136,15 @@ function newCategory() {
 
 function changeCategoryStatus(elementId) {
     const row = document.getElementById(elementId);
-    const categoryName = row.childNodes[1].innerHTML;
-    const categoryDateTime = row.childNodes[2].innerHTML;
-    const categoryStatus = row.childNodes[3].childNodes[0].innerHTML;
+    const id = row.childNodes[1].innerHTML;
+    const categoryName = row.childNodes[2].innerHTML;
+    const categoryDateTime = row.childNodes[3].innerHTML;
+    const categoryStatus = row.childNodes[4].childNodes[0].innerHTML;
 
     const isActive = categoryStatus === "Active" ? true : false;
 
     const category = {
+        id: id,
         categoryName: categoryName,
         dateTime: categoryDateTime,
         active: !isActive,
@@ -150,7 +152,7 @@ function changeCategoryStatus(elementId) {
 
     console.log(category);
 
-    firebase.database().ref(`category/${categoryName}`).set(category);
+    firebase.database().ref(`category/${id}`).set(category);
 
     //location.reload();
 }
