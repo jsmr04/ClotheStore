@@ -510,7 +510,7 @@ mark {
 }
 
 .img-fluid {
-    max-width: 100%;
+    width: 100%;
     height: auto
 }
 
@@ -3403,7 +3403,7 @@ input[type=submit].btn-block {
 .dropdown-item:hover {
     color: #2e2f37;
     text-decoration: none;
-    background-color: #f8f9fc
+    background-color: #fff
 }
 
 .dropdown-item.active,
