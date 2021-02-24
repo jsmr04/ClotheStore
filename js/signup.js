@@ -14,7 +14,15 @@ let user;
 function createNewAccount() {
   errorMesssage.innerHTML = '';
   errorMesssage.setAttribute('hidden',true);
+
   if (validateFields()) {
+    //Validate passwords
+    if(password.value != confirmPassword.value ){
+        errorMesssage.innerHTML = 'Passwords do not match.';
+        errorMesssage.removeAttribute('hidden');
+        return false;
+    }
+
     console.log(`createNewAccount ${email.value} ${password.value}` );
     firebase
       .auth()
@@ -24,7 +32,7 @@ function createNewAccount() {
         user = {
             email: userCredential.user.email,
             firstName: firstName.value,
-            lastName: firstName.value,
+            lastName: lastName.value,
             type: 'customer',
         }
         
@@ -67,3 +75,4 @@ function validateFields() {
     return false;
   }
 }
+

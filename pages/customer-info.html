@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../media/favicon.png">
+
+    <title>Registration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link type="text/css" href="../css/all.css" rel="stylesheet">
+    <link type="text/css" href="../css/login.css" rel="stylesheet">
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+</head>
+
+<body>
+    <form id="form-register" class="form-register" onsubmit="return saveUserInfo()">
+        <div id="errorMessage" style="color: red; font-size: 16;" hidden></div>
+        <h1 class="h3 mb-3 font-weight-normal">Customer Information</h1>
+        <div class="form-label-group">
+            <input type="text" id="inputFirstName" class="form-control form-input" placeholder="First Name" required
+                autofocus>
+            <label for="inputFirstName">First Name</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="text" id="inputLastName" class="form-control form-input" placeholder="Last Name" required
+                autofocus>
+            <label for="inputLastName">Last Name</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required
+                autofocus readonly>
+            <label for="inputEmail">Email address</label>
+        </div>
+
+        <div class="form-label-group">
+            <input type="text" id="inputAddress" class="form-control form-input" placeholder="Address" required>
+            <label for="inputAddress">Address</label>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="inputCountry" class="form-label">Country</label>
+                    <select id="inputCountry" class="form-control form-input" placeholder="Zip Code" required>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label">State / Province</label>
+                    <input type="text" id="inputState" class="form-control form-input" placeholder="" required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="">Zip</label>
+                    <input type="text" id="inputZip" class="form-control form-input" placeholder="" required>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="custom-control custom-checkbox mb-3 ">
+            <input class="custom-control-input" type="checkbox" id="checkbox1">
+            <label class="custom-control-label" for="checkbox1">I agree to the Term of Use</label>
+        </div> -->
+        <button class="btn btn-lg form-btn btn-block" type="submit">Save</button>
+
+        <script src="../js/firebase.js"></script>
+        <script src="../js/countries.js"></script>
+        <script src="../js/customer-info.js"></script>
+</body>
+
+</html>

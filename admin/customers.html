@@ -16,6 +16,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 
     <!-- Menu CSS-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -92,9 +93,9 @@
 
             <!-- Nav Item - Costumers -->
             <li class="nav-item active">
-                <a class="nav-link" href="../admin/costumers.html">
+                <a class="nav-link" href="../admin/customers.html">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Costumers</span></a>
+                    <span>Customers</span></a>
             </li>
 
             <!-- Divider -->
@@ -152,7 +153,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Arthur Ataide</span>
+                                <span id="userName" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="../media/undraw_profile_2.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -173,7 +174,47 @@
                 <!-- End of Topbar -->
 
                 <div class="container-fluid">
-
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Customers Overview</h6>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Email</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Address</th>
+                                            <th>Country</th>
+                                            <th>State / Province</th>
+                                            <th>Zip</th>
+                                            <th class="no-sort"></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Email</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Address</th>
+                                            <th>Country</th>
+                                            <th>State / Province</th>
+                                            <th class="no-sort"></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="customerBody">
+                                        <!-- Dynamic rows -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -213,7 +254,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#">Logout</a>
+                    <a class="btn btn-primary" href="#" onclick="signOut()">Logout</a>
                 </div>
             </div>
         </div>
@@ -236,7 +277,11 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
+    <script src="../js/customers.js"></script>
 
+    <script>
+        checkAuth();
+    </script>
 
 </body>
 

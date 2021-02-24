@@ -16,6 +16,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 
     <!-- Menu CSS-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -92,9 +93,9 @@
 
             <!-- Nav Item - Costumers -->
             <li class="nav-item">
-                <a class="nav-link" href="../admin/costumers.html">
+                <a class="nav-link" href="../admin/customers.html">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Costumers</span></a>
+                    <span>Customers</span></a>
             </li>
 
             <!-- Divider -->
@@ -153,7 +154,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Arthur Ataide</span>
+                                <span id="userName" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle" src="../media/undraw_profile_2.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -248,7 +249,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="#" onclick="signOut()">Logout</a>
                 </div>
             </div>
         </div>
@@ -312,7 +313,9 @@
     <!-- Category Core Data -->
     <script src="../js/firebase.js"></script>
     <script src="../js/category.js"></script>
+
+    <script>
+        checkAuth();
+    </script>
 </body>
-
-
 </html>
