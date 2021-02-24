@@ -26,3 +26,22 @@ function getDate() {
     .split(".")[0]
     .replace("T", " ");
 }
+
+function signOut(){
+  firebase.auth().signOut().then(() => {
+    window.location.href = `../pages/login.html`;
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
+function checkAuth(){
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user && user.email.includes('admin')) {
+      let userName = document.getElementById('userName');
+      userName.innerHTML = user.email;
+    }else{
+      window.location.href = `../pages/login.html`;
+    }
+  });
+}

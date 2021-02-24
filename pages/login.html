@@ -15,11 +15,19 @@
 
     <link type="text/css" href="../css/all.css" rel="stylesheet">
     <link type="text/css" href="../css/login.css" rel="stylesheet">
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 </head>
 
 <body>
-    <form class="form-signin">
+    <form id="form-signin" class="form-signin" onsubmit="return loginRequest()">
         <img class="form-img mb-4" src="../media/logo-favicon.png" alt="" width="72" height="72">
+        <div id="errorMessage" style="color: red; font-size: 16;" hidden></div>
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <div class="form-label-group">
             <input type="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required autofocus>
@@ -38,6 +46,9 @@
         <button class="btn btn-lg form-btn btn-block" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; Team South - 2021</p>
     </form>
+
+    <script src="../js/firebase.js"></script>
+    <script src="../js/signin.js"></script>
 </body>
 
 </html>
