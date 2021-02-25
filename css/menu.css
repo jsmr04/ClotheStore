@@ -1,91 +1,91 @@
 body {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
 .navbar-brand {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 .nav-top {
-    color: #fff;
-    text-decoration: none;
-    background-color: transparent;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .nav-top:hover {
-    color: #A89BBA;
-    text-decoration: none;
-    background-color: transparent;
+  color: #a89bba;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .dropdown-header {
-    background-color: #5a2d82!important;
-    border: 1px solid #5a2d82!important;
+  background-color: #5a2d82 !important;
+  border: 1px solid #5a2d82 !important;
 }
 
 .bg-primary {
-    background-color: #5a2d82!important;
+  background-color: #5a2d82 !important;
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #5a2d82;
-    border-color: #fff;
+  color: #fff;
+  background-color: #5a2d82;
+  border-color: #fff;
 }
 
 .btn-primary:hover {
-    color: #fff;
-    background-color: #7D6A98;
-    border-color: #fff;
+  color: #fff;
+  background-color: #7d6a98;
+  border-color: #fff;
 }
 
 .search-input {
-    border-radius: .80rem;
+  border-radius: 0.8rem;
 }
 
 .icon-size {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .align-right {
-    position: absolute;
-    right: 1.5rem;
+  position: absolute;
+  right: 1.5rem;
 }
 
 .bg-checkout-warning {
-    color: #fff;
-    background-color: #ec6b33!important;
+  color: #fff;
+  background-color: #ec6b33 !important;
 }
 
 .bg-checkout-warning:hover {
-    color: #fff;
-    background-color: rgba(236, 107, 51, 0.8)!important;
+  color: #fff;
+  background-color: rgba(236, 107, 51, 0.8) !important;
 }
 
 .menu-bottom {
-    color: #5a2d82;
-    border-bottom: 2px solid #5a2d82;
-    padding: 0%;
+  color: #5a2d82;
+  border-bottom: 2px solid #5a2d82;
+  padding: 0%;
 }
 
 .menu-bottom a {
-    color: #5a2d82;
+  color: #5a2d82;
 }
 
 .menu-bottom-container {
-    width: auto;
-    height: auto;
+  width: auto;
+  height: auto;
 }
 
 .menu-bottom .nav-item {
-    padding-left: 2em;
-    padding-right: 2em;
-    border-left: 2px solid #FFF;
-    border-right: 2px solid #FFF;
-    border-bottom: 2px solid #FFF;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .menu-bottom .nav-item:hover {
-    border-bottom: 2px solid #645472;
-    text-decoration: solid;
+  border-bottom: 2px solid #645472;
+  text-decoration: solid;
 }

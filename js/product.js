@@ -314,8 +314,8 @@ function showPictureName() {
         let spanElement = document.createElement("span");
 
         let iRemove = document.createElement("i");
-        iRemove.setAttribute("class", "bi-backspace-fill");
-        iRemove.setAttribute("style", "margin-left:2px; font-size: 1rem; color: cornflowerblue;");
+        iRemove.setAttribute("class", "fas fa-trash");
+        iRemove.setAttribute("style", "margin-left:2px; font-size: 1rem; color: #5a2d82;");
 
         //Adding event
         iRemove.setAttribute("onclick", `removePicture(${index})`);
@@ -355,12 +355,12 @@ function updateStatus() {
         console.log('Changing status');
         console.log(products[productIndex]);
 
-        if (products[productIndex].pictures == undefined){
+        if (products[productIndex].pictures == undefined) {
             products[productIndex].pictures = [];
         }
-        
+
         products[productIndex].category = getCategoryId(products[productIndex].category);
-        
+
         firebase
             .database()
             .ref(`product/${products[productIndex].id}`)

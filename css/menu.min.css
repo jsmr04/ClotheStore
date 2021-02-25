@@ -1967,9 +1967,9 @@ pre code {
 .form-control:focus {
     color: #6e707e;
     background-color: #fff;
-    border-color: #bac8f3;
+    border-color: #5a2d82;
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(78, 115, 223, .25)
+    box-shadow: 0 0 0 .2rem rgba(90, 45, 130, .25)
 }
 
 .form-control::-webkit-input-placeholder {
@@ -10112,7 +10112,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #f8f9fc;
+    background-color: #fff;
     width: 100%;
     overflow-x: hidden
 }
@@ -11607,7 +11607,7 @@ form.user .btn-user {
 
 footer.sticky-footer {
     padding: 2rem 0;
-    flex-shrink: 0
+    flex-shrink: 0;
 }
 
 footer.sticky-footer .copyright {
