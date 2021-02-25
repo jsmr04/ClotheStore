@@ -27,21 +27,52 @@ function getDate() {
     .replace("T", " ");
 }
 
-function signOut(){
-  firebase.auth().signOut().then(() => {
-    window.location.href = `../pages/login.html`;
-  }).catch((error) => {
-    // An error happened.
-  });
+function signOut(fromIndex = false) {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      if(fromIndex){
+        window.location.href = `index.html`;
+      }else{
+        window.location.href = `../pages/login.html`;
+      }
+    })
+    .catch((error) => {
+      // An error happened.
+    });
 }
 
-function checkAuth(){
+function checkAuth(fromIndex = false) {
   firebase.auth().onAuthStateChanged((user) => {
-    if (user && user.email.includes('admin')) {
-      let userName = document.getElementById('userName');
+    let userName = document.getElementById("userName");
+    let divLoggedIn = document.getElementById("userLoggedIn");
+    let divNotLoggedIn = document.getElementById("userNotLoggedIn");
+
+    if (user) {
       userName.innerHTML = user.email;
-    }else{
-      window.location.href = `../pages/login.html`;
+      //Only for index
+      console.log(divLoggedIn)
+      if (divLoggedIn != undefined) {
+        divLoggedIn.removeAttribute('hidden');
+      }
+
+      if (divNotLoggedIn != undefined) {
+        divNotLoggedIn.setAttribute('hidden', true);
+      }
+    } else {
+      if(fromIndex){
+        //
+        if (divLoggedIn != undefined) {
+          divLoggedIn.setAttribute('hidden', true);
+        }
+  
+        if (divNotLoggedIn != undefined) {
+          divNotLoggedIn.removeAttribute('hidden');
+        }
+      }else{
+        window.location.href = `../pages/login.html`;
+      }
     }
   });
 }
