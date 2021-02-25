@@ -2500,8 +2500,8 @@ fieldset:disabled a.btn {
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
-    background-color: #645472;
-    border-color: #645472;
+    background-color: #5a2d82;
+    border-color: #5a2d82;
     box-shadow: 0 0 0 .2rem rgba(90, 45, 130, .5)
 }
 
@@ -4270,7 +4270,7 @@ input[type=submit].btn-block {
 .nav-tabs .nav-link.active {
     color: #6e707e;
     background-color: #fff;
-    border-color: #dddfeb #dddfeb #fff
+    border-color: rgba(90, 45, 130, .5) rgba(90, 45, 130, .5) #fff
 }
 
 .nav-tabs .dropdown-menu {
@@ -4732,7 +4732,7 @@ input[type=submit].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid #e3e6f0;
+    border: 1px solid rgba(90, 45, 130, .5);
     border-radius: .35rem
 }
 
@@ -4793,8 +4793,8 @@ input[type=submit].btn-block {
 .card-header {
     padding: .75rem 1.25rem;
     margin-bottom: 0;
-    background-color: #f8f9fc;
-    border-bottom: 1px solid #e3e6f0
+    background-color: rgba(90, 45, 130, .1);
+    border-bottom: 1px solid rgba(90, 45, 130, .5);
 }
 
 .card-header:first-child {
@@ -6843,7 +6843,7 @@ button.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #4e73df!important
+    border-color: #5a2d82!important
 }
 
 .border-secondary {
