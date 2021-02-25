@@ -193,7 +193,9 @@
                                             <th>#</th>
                                             <th>Id</th>
                                             <th>Name</th>
+                                            <th>Classification</th>
                                             <th>Category</th>
+                                            <th>Size</th>
                                             <th>Price</th>
                                             <th>Stock</th>
                                             <th>Status</th>
@@ -205,7 +207,9 @@
                                             <th>#</th>
                                             <th>Id</th>
                                             <th>Name</th>
+                                            <th>Classification</th>
                                             <th>Category</th>
+                                            <th>Size</th>
                                             <th>Price</th>
                                             <th>Stock</th>
                                             <th>Status</th>
@@ -311,9 +315,28 @@
                                 <input maxlength="30" type="text" class="form-control" id="productNameInput" aria-describedby="productHelp" placeholder="Product name">
                             </div>
                             <div class="mb-3">
+                                <label for="productClasSelect" class="form-label">Classification</label>
+                                <select class="form-control" id="productClasSelect" aria-describedby="productHelp" def>
+                                    <option selected></option>
+                                    <option>Women</option>
+                                    <option>Men</option>
+                                    <option>Kids</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="productCatSelect" class="form-label">Category</label>
                                 <select class="form-control" id="productCatSelect" aria-describedby="productHelp">
                                     </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productSizeSelect" class="form-label">Size</label>
+                                <select multiple class="form-control" id="productSizeSelect" aria-describedby="productHelp">
+                                    <option>XS</option>
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="productDescInput" class="form-label">Description</label>

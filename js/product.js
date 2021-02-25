@@ -12,7 +12,9 @@ class Product {
         stock,
         dateTime,
         active,
-        pictures
+        pictures,
+        classification,
+        size,
     ) {
         this.id = id;
         this.name = name;
@@ -23,6 +25,8 @@ class Product {
         this.dateTime = dateTime;
         this.active = active;
         this.pictures = pictures;
+        this.classification = classification;
+        this.size = size;
     }
 
     save() {
@@ -69,7 +73,6 @@ function fillCategoriesDropdown() {
 }
 
 function getProducts() {
-    //TODO: Implement this function to get the list of products from Firebase
     const tableBody = document.getElementById("productBody");
     const productRef = firebase.database().ref("product/");
 
@@ -97,10 +100,26 @@ function getProducts() {
             tdName.innerHTML = childData["name"];
             tr.appendChild(tdName);
 
+            let tdClassification= document.createElement("td");
+            if (childData["classification"] != undefined){
+                tdClassification.innerHTML = childData["classification"];
+            }else{
+                tdClassification.innerHTML = '';
+            }
+            tr.appendChild(tdClassification);
+            
             let tdCategory = document.createElement("td");
             let cat = getCategoryName(childData["category"]);
             tdCategory.innerHTML = cat;
             tr.appendChild(tdCategory);
+
+            let tdSize= document.createElement("td");
+            if (childData["size"] != undefined){
+                tdSize.innerText = childData["size"];
+            }else{
+                tdSize.innerText = '';
+            }
+            tr.appendChild(tdSize);
 
             let tdPrice = document.createElement("td");
             tdPrice.innerHTML = childData["price"];
@@ -151,6 +170,8 @@ function getProducts() {
             let dateTime = childData["dateTime"];
             let active = childData["active"];
             let pictures = childData["pictures"];
+            let classification = childData["classification"];
+            let size = childData["size"];
 
             const product = new Product(
                 id,
@@ -161,7 +182,9 @@ function getProducts() {
                 stock,
                 dateTime,
                 active,
-                pictures
+                pictures,
+                classification,
+                size,
             );
             console.log(product);
             products.push(product);
@@ -183,6 +206,8 @@ function editProduct(index) {
     let descriptionInput = document.getElementById("productDescInput");
     let priceInput = document.getElementById("productPriceInput");
     let stockInput = document.getElementById("productStockInput");
+    let classificationInput = document.getElementById("productClasSelect");
+    let sizeInput = document.getElementById("productSizeSelect");
 
     editMode = true;
     productIndex = index;
@@ -194,9 +219,10 @@ function editProduct(index) {
     descriptionInput.value = products[productIndex].description;
     priceInput.value = products[productIndex].price;
     stockInput.value = products[productIndex].stock;
+    classificationInput.value = products[productIndex].classification;
+    $('#productSizeSelect').val(products[productIndex].size);
 
     //Copying pictures into temp array
-
     console.log(products[productIndex].pictures);
     if (products[productIndex].pictures != undefined) {
         pictures = [];
@@ -216,9 +242,13 @@ function saveProduct() {
     let id = document.getElementById("productIdInput").value;
     let name = document.getElementById("productNameInput").value;
     let category = getCategoryId(document.getElementById("productCatSelect").value);
+    let classification = document.getElementById("productClasSelect").value;
     let description = document.getElementById("productDescInput").value;
     let price = Number(document.getElementById("productPriceInput").value);
     let stock = Number(document.getElementById("productStockInput").value);
+    let sizes = productSizeSelect = $('#productSizeSelect').val();
+
+    
     let active;
     let dateTime;
 
@@ -242,7 +272,9 @@ function saveProduct() {
             stock,
             dateTime,
             active,
-            pictures
+            pictures,
+            classification,
+            sizes,
         );
         console.log(Product);
         product.save();
@@ -347,6 +379,8 @@ function newProduct() {
     let descriptionInput = document.getElementById("productDescInput");
     let priceInput = document.getElementById("productPriceInput");
     let stockInput = document.getElementById("productStockInput");
+    let classificationInput = document.getElementById("productClasSelect");
+    let sizeInput = document.getElementById("productSizeSelect");
     let pictureContainer = document.getElementById("list-pics");
     editMode = false;
 
@@ -357,6 +391,8 @@ function newProduct() {
     descriptionInput.value = '';
     priceInput.value = '';
     stockInput.value = '';
+    classificationInput.value = '';
+    sizeInput.value = '';
     pictureContainer.innerHTML = '';
 
     pictures = [];
