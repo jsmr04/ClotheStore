@@ -1,0 +1,160 @@
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column;
+    }
+    .col-25 {
+        margin-top: 16px;
+    }
+}
+
+h5 {
+    color: rgb(67, 67, 67);
+}
+
+button.bg-checkout-warning {
+    margin-top: 35px;
+    border-radius: 3px;
+    border-color: #ec6b33!important;
+    padding: 9px;
+    font-size: 1.2em;
+}
+
+.row {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap;
+    /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 15px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.col-25 {
+    -ms-flex: 25%;
+    /* IE10 */
+    flex: 25%;
+    min-width: 400px
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    /* IE10 */
+    flex: 50%;
+    min-width: 700px;
+}
+
+.col-75 {
+    -ms-flex: 75%;
+    /* IE10 */
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container-cart {
+    background-color: #fff;
+    padding: 5px 20px 5px 20px;
+    margin: 5px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.bg-lightgrey {
+    background-color: #f2f2f2;
+    min-height: 400px;
+}
+
+.m-top {
+    margin-top: 20px;
+}
+
+.m-bottom {
+    margin-bottom: 0.8rem;
+}
+
+.divider-vertical {
+    border-left: 1px solid lightgrey;
+    height: auto;
+}
+
+.corner-cel {
+    width: 20%;
+}
+
+.middle-cel {
+    width: 60%;
+}
+
+.item-cel {
+    margin: 10px;
+    width: 100%;
+}
+
+.item-icon-delete {
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.item-icon-delete:hover {
+    color: red;
+}
+
+.item-img img {
+    border: 1px solid lightgrey;
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.item-price {
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.input-zip {
+    max-width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.item-select {
+    max-width: 40px;
+    padding: 0.1em;
+}
+
+.label {
+    padding: 5px;
+    text-align: center;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.cont {
+    width: 100%;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+#wrapper {
+    position: relative;
+    min-height: 91vh;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Footer height */
+}
