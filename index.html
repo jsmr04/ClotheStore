@@ -20,6 +20,13 @@
     <link href="css/menu.min.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
 
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -117,11 +124,12 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-100 small">John Doe</span>
+                                <span id="userName" class="mr-2 d-none d-lg-inline text-gray-100 small"></span>
                                 <img class="img-profile rounded-circle" src="../ClotheStore/media/undraw_profile_2.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div id="userLoggedIn" hidden>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                                 </a>
@@ -132,6 +140,12 @@
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                                 </a>
+                            </div>
+                            <div id="userNotLoggedIn" hidden>
+                                <a class="dropdown-item" href="./pages/login.html">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Sign In
+                                </a>
+                            </div>
                             </div>
                         </li>
 
@@ -148,13 +162,13 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="menDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-primary medium">Men</span>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="menDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                <ul id="menDropdownUl" class="dropdown-menu" aria-labelledby="menDropdown">
+                                    <!-- <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                                 </ul>
                             </li>
 
@@ -162,13 +176,8 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="womenDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-primary medium">Women</span>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="womenDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul id="womenDropdownUl" class="dropdown-menu" aria-labelledby="womenDropdown">
+
                                 </ul>
                             </li>
 
@@ -176,13 +185,8 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="kidsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-primary medium">Kids</span>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="kidsDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul id="kidsDropdownUl" class="dropdown-menu" aria-labelledby="kidsDropdown">
+
                                 </ul>
                             </li>
                         </ul>
@@ -384,7 +388,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="#" onclick="signOut(true)">Logout</a>
                 </div>
             </div>
         </div>
@@ -399,6 +403,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/menu.min.js"></script>
+
+    <!-- Main Core Data -->
+    <script src="js/firebase.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+        checkAuth(true);
+    </script>
 
 
 </body>
