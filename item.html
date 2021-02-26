@@ -48,13 +48,13 @@
                             <b>Store</b>
                         </a>
                     </div>
-                    <form class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search">
+                    <form id="form-search" onsubmit="return searchProduct()" class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small search-input"
+                            <input id="productNameText" type="text" class="form-control bg-light border-0 small search-input"
                                 placeholder="What are you searching for ? " aria-label="Search "
                                 aria-describedby="basic-addon2 ">
                             <div class="input-group-append">
-                                <button class="btn btn-primary search-input" type="button">
+                                <button class="btn btn-primary search-input" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -211,11 +211,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3">
-                            <h2 class="my-4">Women Chothes</h2>
-                            <div class="list-group">
-                                <a href="# " class="list-group-item">Pants</a>
-                                <a href="# " class="list-group-item">Shorts</a>
-                                <a href="# " class="list-group-item">Shirts</a>
+                            <h2 id="leftPanelTitle" class="my-4">Women Chothes</h2>
+                            <div id="leftPanelList" class="list-group">
+
                             </div>
                         </div>
                         <!-- /.col-lg-3 -->
@@ -226,16 +224,8 @@
                                         <div class="d-flex top-box">
                                             <div class="w-100">
                                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                                    <div class="carousel-inner" role="listbox">
-                                                        <div class="carousel-item active">
-                                                            <img class="d-block img-fluid" src="http://placehold.it/700x400" alt="First slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="http://placehold.it/700x400" alt="Second slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="http://placehold.it/700x400" alt="Third slide">
-                                                        </div>
+                                                    <div id="itemPictures" class="carousel-inner" role="listbox">
+                                                        <!-- Dynamic content -->
                                                     </div>
                                                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                                         data-slide="prev">
@@ -252,29 +242,29 @@
                                             </div>
                                             <div class="flex-column rel cont  ">
                                                 <div class="cont ">
-                                                    <h5><div id="item-desc">Autumn Men Pants Hip Hop Hare</div></h5>
+                                                    <h5><div id="item-desc"></div></h5>
                                                 </div>
                                                 <div class="cont m-top-1">
-                                                    <h5><b><div id="item-price">C$24.99</div></b></h5>
+                                                    <h5><b><div id="item-price"></div></b></h5>
                                                 </div>
                                                 <div class="cont d-flex m-top-1">
                                                     <div class="" style="margin-right:10px; margin-top:5px;">Size: </div>
                                                     <div class="cont">
                                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label class="btn btn-toolbar active">
-                                                                <input type="radio" name="options" id="option1" autocomplete="off" checked> XS
+                                                            <label id="sizeXS" class="btn btn-toolbar">
+                                                                <input type="checkbox" name="options" id="optionXS" autocomplete="off"> XS
                                                             </label>
-                                                            <label class="btn btn-toolbar">
-                                                                <input type="radio" name="options" id="option2" autocomplete="off"> S
+                                                            <label id="sizeS" class="btn btn-toolbar">
+                                                                <input type="checkbox" name="options" id="optionS" autocomplete="off"> S
                                                             </label>
-                                                            <label class="btn btn-toolbar">
-                                                                <input type="radio" name="options" id="option3" autocomplete="off"> M
+                                                            <label id="sizeM" class="btn btn-toolbar">
+                                                                <input type="checkbox" name="options" id="optionM" autocomplete="off"> M
                                                             </label>
-                                                            <label class="btn btn-toolbar">
-                                                                <input type="radio" name="options" id="option4" autocomplete="off"> L
+                                                            <label id="sizeL" class="btn btn-toolbar">
+                                                                <input type="checkbox" name="options" id="optionL" autocomplete="off"> L
                                                             </label>
-                                                            <label class="btn btn-toolbar">
-                                                                <input type="radio" name="options" id="option5" autocomplete="off"> XL
+                                                            <label id="sizeXL" class="btn btn-toolbar">
+                                                                <input type="checkbox" name="options" id="optionXL" autocomplete="off"> XL
                                                             </label>
                                                         </div>
                                                     </div>
@@ -306,11 +296,11 @@
                                                     <div class="tab-content" id="pills-tabContent">
                                                         <div class="tab-pane fade show active" id="pills-desc" role="tabpanel" aria-labelledby="pills-desc-tab">
                                                             <h5 class="card-title">Description</h5>
-                                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                            <p id="item-description" class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                                         </div>
                                                         <div class="tab-pane fade show" id="pills-spec" role="tabpanel" aria-labelledby="pills-spec-tab">
                                                             <h5 class="card-title">Specification</h5>
-                                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                            <p class="card-text"></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -378,7 +368,8 @@
 
     <!-- Main Core Data -->
     <script src="js/firebase.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/item.js"></script>
 
     <script>
         $("#carouselExampleIndicators").carousel("pause");
