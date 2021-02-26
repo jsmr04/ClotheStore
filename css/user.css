@@ -3,7 +3,6 @@ body {
     height: 100%;
 }
 
-
 @media (max-width: 800px) {
     .row {
         flex-direction: column;
@@ -28,6 +27,7 @@ h5 {
     max-width: 700px;
     padding: 15px;
     margin: 0 auto;
+
 }
 
 
@@ -85,6 +85,18 @@ h5 {
     margin-bottom: 0.8rem;
 }
 
+.qtt{
+    width:100%; 
+    margin: 0, auto; 
+    height: auto; 
+    padding: 10px; 
+    position: relative;
+    text-align: center;
+}
+.rel{
+    margin: 0, auto;
+    position: relative;
+}
 /*Using abve */
 
 /* 

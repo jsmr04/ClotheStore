@@ -91,31 +91,46 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle nav-top" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle nav-top" href="# " id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-bag icon-size"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
+                                <span id="cartItems" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Your Shopping cart
-                                </h6>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
+                            <div  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">Your Shopping cart</h6>
+                                <div id="shoppingCart">
+                                <!-- <div class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-sm" src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg" alt="">
+                                        <img class="rounded-sm"
+                                            src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg "
+                                            alt=" ">
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Autumn Men Pants Hip Hop Harem Joggers Pants 2020 New Male Trousers Mens Joggers Solid Multi-pocket Pants Sweatpants M-4XL
+                                        <div class="text-truncate">
+                                            Autumn Men Pants Hip Hop Harem Joggers Pants 2020 New
+                                            Male Trousers Mens Joggers Solid Multi-pocket Pants
+                                            Sweatpants M-4XL
                                         </div>
-                                        <div class="medium "><b>$25.99</b> </div>
+                                        <div class="medium">
+                                            <b>$25.99</b>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                </div>
+                                <div class="dropdown-item d-flex align-items-center" href="# ">
+                                    <div class="text-primary align-content-lg-start">
+                                        <b>SubTotal:</b>
+                                    </div>
+                                    <div class="align-right medium text-dark" id="cart-subtotal">
+                                        <b id="totalCart"></b>
                                     </div>
                                 </div>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="text-primary align-content-lg-start"><b>SubTotal:</b></div>
-                                    <div class="align-right medium text-dark" id="cart-subtotal"><b>$25.99</b></div>
-                                </div>
-                                <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#"><b>Go to Cart</b></a>
+                                <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#">
+                                    <b>Go to Cart</b>
+                                </a>
                             </div>
                         </li>
 
@@ -136,7 +151,7 @@
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="orders.html">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         My Orders
                                     </a>
@@ -228,6 +243,7 @@
                                         <input id="zip" class="form-control form-input" type="email">
                                     </div>
                                 </div>
+                                <hr>
                                 <a class="btn btn-primary btn-lg form-btn btn-block m-bottom m-top" href="#" onclick="edit()"" data-toggle="modal" data-target="#editModal"">Save</a>
                             </div>
                         </div>
@@ -308,6 +324,7 @@
 
     <script src="../js/firebase.js"></script>
     <script src="../js/user-profile.js"></script>
+    <script src="../js/main.js"></script>
 
     <script>
         checkAuth();
