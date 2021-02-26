@@ -25,6 +25,7 @@ if (urlParams.has("productId")) {
 }
 
 getCategories();
+updateItemCounter();
 
 function getCategories() {
   const categoryRef = firebase.database().ref("category/");
@@ -156,6 +157,18 @@ function fillBanners(){
 
 }
 
+function updateItemCounter(){
+    let cartItems = document.getElementById('cartItems');
+    if (cartItems != undefined){
+        let itemIndex = getCookie("itemIndex");
+
+        if (itemIndex != "") {
+            let itemsInCart = itemIndex.split("|").length;
+            cartItems.innerText = itemsInCart;
+        }
+    }
+}
+
 function searchProduct() {
   let productNameText = document.getElementById("productNameText");
 
@@ -164,4 +177,27 @@ function searchProduct() {
   }
 
   return false;
+}
+
+function setCookie(cname, cvalue, exdays) {
+    let d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
 }

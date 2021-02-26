@@ -91,7 +91,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-bag icon-size"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
+                                <span id="cartItems" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -251,20 +251,20 @@
                                                     <div class="" style="margin-right:10px; margin-top:5px;">Size: </div>
                                                     <div class="cont">
                                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label id="sizeXS" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionXS" autocomplete="off"> XS
+                                                            <label id="sizeXS" class="btn btn-toolbar" onclick="selectSize('XS')">
+                                                                <input type="radio" name="options" id="optionXS" autocomplete="off"> XS
                                                             </label>
-                                                            <label id="sizeS" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionS" autocomplete="off"> S
+                                                            <label id="sizeS" class="btn btn-toolbar" onclick="selectSize('S')">
+                                                                <input type="radio" name="options" id="optionS" autocomplete="off"> S
                                                             </label>
-                                                            <label id="sizeM" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionM" autocomplete="off"> M
+                                                            <label id="sizeM" class="btn btn-toolbar" onclick="selectSize('M')">
+                                                                <input type="radio" name="options" id="optionM"> M
                                                             </label>
-                                                            <label id="sizeL" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionL" autocomplete="off"> L
+                                                            <label id="sizeL" class="btn btn-toolbar" onclick="selectSize('L')">
+                                                                <input type="radio" name="options" id="optionL" autocomplete="off"> L
                                                             </label>
-                                                            <label id="sizeXL" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionXL" autocomplete="off"> XL
+                                                            <label id="sizeXL" class="btn btn-toolbar" onclick="selectSize('XL')">
+                                                                <input type="radio" name="options" id="optionXL" autocomplete="off"> XL
                                                             </label>
                                                         </div>
                                                     </div>
@@ -278,7 +278,7 @@
                                                 
                                                 <div class="d-flex cont down " style="margin-top: 5px;">
                                                     <div class="cont ">
-                                                        <a href="#" data-toggle="modal" data-target="#buyModal" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a>
+                                                        <a href="#" id="buyItem" data-toggle="modal" style="pointer-events:none;" data-target="#buyModal" class="btn btn-1 btn-secondary"><i class="fas fa-shopping-cart"></i> Buy</a>
                                                     </div>
                                                     <!-- <div class="cont m-left">
                                                         <a href="#" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a>
@@ -371,21 +371,21 @@
         aria-hidden="true ">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <!-- <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+                <div class="modal-header">
+                    <h5 id="buyModalTitle" class="modal-title" id="exampleModalLabel">
                         
                     </h5>
                     <button class="close" type="button " data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true ">×</span>
                     </button>
-                </div> -->
+                </div>
                 <div class="modal-body">
-                    If will continue shopping, select "Add to Cart" or select "Go to Checkout" if you have finished.
+                    If you will continue shopping, select "Add to Cart" or select "Go to Checkout" if you have finished.
                 </div>
                 <div class="modal-footer">
                     <!-- <a href="#" data-toggle="modal" data-target="#buyModal" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a> -->
-                    <button class="btn btn-primary" type="button">Add to Cart</button>
-                    <a class="btn bg-checkout-warning" href="#" onclick="">Go to Checkout</a>
+                    <button class="btn btn-primary" type="button" onclick="addToCart()">Add to Cart</button>
+                    <a class="btn bg-checkout-warning" href="#" onclick="goToCheckOut()">Go to Checkout</a>
                 </div>
             </div>
         </div>
