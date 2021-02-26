@@ -91,13 +91,14 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-bag icon-size"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
+                                <span id="cartItems" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <div  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">Your Shopping cart</h6>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
+                                <div id="shoppingCart">
+                                <!-- <div class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-sm"
                                             src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg "
@@ -113,13 +114,15 @@
                                             <b>$25.99</b>
                                         </div>
                                     </div>
+                                </div> -->
                                 </div>
+                                
                                 <div class="dropdown-item d-flex align-items-center" href="# ">
                                     <div class="text-primary align-content-lg-start">
                                         <b>SubTotal:</b>
                                     </div>
                                     <div class="align-right medium text-dark" id="cart-subtotal">
-                                        <b>$25.99</b>
+                                        <b id="totalCart"></b>
                                     </div>
                                 </div>
                                 <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#">
@@ -251,31 +254,38 @@
                                                     <div class="" style="margin-right:10px; margin-top:5px;">Size: </div>
                                                     <div class="cont">
                                                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                            <label id="sizeXS" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionXS" autocomplete="off"> XS
+                                                            <label id="sizeXS" class="btn btn-toolbar" onclick="selectSize('XS')">
+                                                                <input type="radio" name="options" id="optionXS" autocomplete="off"> XS
                                                             </label>
-                                                            <label id="sizeS" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionS" autocomplete="off"> S
+                                                            <label id="sizeS" class="btn btn-toolbar" onclick="selectSize('S')">
+                                                                <input type="radio" name="options" id="optionS" autocomplete="off"> S
                                                             </label>
-                                                            <label id="sizeM" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionM" autocomplete="off"> M
+                                                            <label id="sizeM" class="btn btn-toolbar" onclick="selectSize('M')">
+                                                                <input type="radio" name="options" id="optionM"> M
                                                             </label>
-                                                            <label id="sizeL" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionL" autocomplete="off"> L
+                                                            <label id="sizeL" class="btn btn-toolbar" onclick="selectSize('L')">
+                                                                <input type="radio" name="options" id="optionL" autocomplete="off"> L
                                                             </label>
-                                                            <label id="sizeXL" class="btn btn-toolbar">
-                                                                <input type="checkbox" name="options" id="optionXL" autocomplete="off"> XL
+                                                            <label id="sizeXL" class="btn btn-toolbar" onclick="selectSize('XL')">
+                                                                <input type="radio" name="options" id="optionXL" autocomplete="off"> XL
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex cont down ">
+                                                <div class="cont d-flex">
+                                                    <div class="cont d-flex" style="margin-top:8px;margin-bottom:8px;">
+                                                        <div class="" style="margin-right:12px; margin-top:10px;">Qty: </div>
+                                                        <input type="number" id="itemQuantity" value="1" min="1" max="99" >
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="d-flex cont down " style="margin-top: 5px;">
                                                     <div class="cont ">
-                                                        <a href="#" class="btn btn-1 btn-primary"><i class="fas fa-plus"></i> Add to Cart</a>
+                                                        <a href="#" id="buyItem" data-toggle="modal" style="pointer-events:none;" data-target="#buyModal" class="btn btn-1 btn-secondary"><i class="fas fa-shopping-cart"></i> Buy</a>
                                                     </div>
-                                                    <div class="cont m-left">
+                                                    <!-- <div class="cont m-left">
                                                         <a href="#" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a>
-                                                    </div>
+                                                    </div> -->
                                                     
                                                 </div>
                                             </div>
@@ -336,7 +346,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel "
+    <div class="modal fade" id="logoutModal" tabindex="-1 " role="dialog" aria-labelledby="exampleModalLabel "
         aria-hidden="true ">
         <div class="modal-dialog" role="document ">
             <div class="modal-content">
@@ -358,6 +368,32 @@
             </div>
         </div>
     </div>
+
+    <!-- Checkout Modal-->
+    <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true ">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="buyModalTitle" class="modal-title" id="exampleModalLabel">
+                        
+                    </h5>
+                    <button class="close" type="button " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true ">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    If you will continue shopping, select "Add to Cart" or select "Go to Checkout" if you have finished.
+                </div>
+                <div class="modal-footer">
+                    <!-- <a href="#" data-toggle="modal" data-target="#buyModal" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a> -->
+                    <button class="btn btn-primary" type="button" onclick="addToCart(false)">Add to Cart</button>
+                    <a class="btn bg-checkout-warning" href="#" onclick="addToCart(true)">Go to Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js "></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
