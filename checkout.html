@@ -52,7 +52,7 @@
     
             <div class="row">
               <div class="col-50">
-                <h3>Billing Address</h3>
+                <h3>Shipping</h3>
                 <label for="fname"><i class="fa fa-user"></i> Full Name</label>
                 <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
                 <label for="email"><i class="fa fa-envelope"></i> Email</label>
@@ -76,13 +76,6 @@
     
               <div class="col-50">
                 <h3>Payment</h3>
-                <label for="fname">Accepted Cards</label>
-                <div class="icon-container">
-                  <i class="fa fa-cc-visa" style="color:navy;"></i>
-                  <i class="fa fa-cc-amex" style="color:blue;"></i>
-                  <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                  <i class="fa fa-cc-discover" style="color:orange;"></i>
-                </div>
                 <label for="cname">Name on Card</label>
                 <input type="text" id="cname" name="cardname" placeholder="John More Doe">
                 <label for="ccnum">Credit card number</label>
@@ -106,28 +99,87 @@
             <label>
               <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
             </label>
-            <input type="submit" value="Continue to checkout" class="btn">
+            <input type="submit" value="Confirm" class="btn">
           </form>
         </div>
       </div>
     
       <div class="col-25">
         <div class="container">
-          <h4>Cart
-            <span class="price" style="color:black">
-              <i class="fa fa-shopping-cart"></i>
-              <b>4</b>
+      <div class='order-info'>
+        <div class='order-info-content'>
+          <h4>Order Summary</h4>
+                  <div class='line'></div>
+          <table class='order-table'>
+            <tbody>
+              <tr>
+                <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
+                </td>
+                <td>
+                  <br> <span class='thin'>Nike</span>
+                  <br> Free Run 3.0 Women<br> <span class='thin small'> Color: Grey/Orange, Size: 10.5<br><br></span>
+                </td>
+  
+              </tr>
+              <tr>
+                <td>
+                  <div class='price'>$99.95</div>
+                </td>
+              </tr>
+            </tbody>
+  
+          </table>
+          <div class='line'></div>
+          <table class='order-table'>
+            <tbody>
+              <tr>
+                <td><img src='https://dl.dropboxusercontent.com/s/qbj9tsbvthqq72c/Vintage-20L-Backpack-by-Fj%C3%A4llr%C3%A4ven.jpg' class='full-width'></img>
+                </td>
+                <td>
+                  <br> <span class='thin'>Fjällräven</span>
+                  <br>Vintage Backpack<br> <span class='thin small'> Color: Olive, Size: 20L</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='price'>$235.95</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class='line'></div>
+          <table class='order-table'>
+            <tbody>
+              <tr>
+                <td><img src='https://dl.dropboxusercontent.com/s/nbr4koso8dpoggs/6136C1p5FjL._SL1500_.jpg' class='full-width'></img>
+                </td>
+                <td>
+                  <br> <span class='thin'>Monobento</span>
+                  <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
+                </td>
+  
+              </tr>
+              <tr>
+                <td>
+                  <div class='price'>$25.95</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class='line'></div>
+          <div class='total'>
+            <span style='float:left;'>
+              <div class='thin dense'>VAT 19%</div>
+              <div class='thin dense'>Delivery</div>
+              TOTAL
             </span>
-          </h4>
-          <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-          <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-          <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-          <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-          <hr>
-          <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            <span style='float:right; text-align:right;'>
+              <div class='thin dense'>$68.75</div>
+              <div class='thin dense'>$4.95</div>
+              $435.55
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>

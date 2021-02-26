@@ -2,6 +2,10 @@ body {
   padding-top: 80px;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .navbar-brand {
   font-size: x-large;
 }
