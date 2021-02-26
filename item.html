@@ -94,10 +94,11 @@
                                 <span id="cartItems" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <div  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">Your Shopping cart</h6>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
+                                <div id="shoppingCart">
+                                <!-- <div class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-sm"
                                             src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg "
@@ -113,13 +114,15 @@
                                             <b>$25.99</b>
                                         </div>
                                     </div>
+                                </div> -->
                                 </div>
+                                
                                 <div class="dropdown-item d-flex align-items-center" href="# ">
                                     <div class="text-primary align-content-lg-start">
                                         <b>SubTotal:</b>
                                     </div>
                                     <div class="align-right medium text-dark" id="cart-subtotal">
-                                        <b>$25.99</b>
+                                        <b id="totalCart"></b>
                                     </div>
                                 </div>
                                 <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#">
@@ -384,8 +387,8 @@
                 </div>
                 <div class="modal-footer">
                     <!-- <a href="#" data-toggle="modal" data-target="#buyModal" class="btn btn-1 bg-checkout-warning"><i class="fas fa-shopping-cart"></i> Buy</a> -->
-                    <button class="btn btn-primary" type="button" onclick="addToCart()">Add to Cart</button>
-                    <a class="btn bg-checkout-warning" href="#" onclick="goToCheckOut()">Go to Checkout</a>
+                    <button class="btn btn-primary" type="button" onclick="addToCart(false)">Add to Cart</button>
+                    <a class="btn bg-checkout-warning" href="#" onclick="addToCart(true)">Go to Checkout</a>
                 </div>
             </div>
         </div>

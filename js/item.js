@@ -97,7 +97,7 @@ function getProduct() {
   }
 }
 
-function addToCart() {
+function addToCart(goToCheckout) {
   if (productId != undefined && itemSizeSelected != undefined && itemQuantity.value != '') {
     //ITEM KEY
     let itemIndex = getCookie("itemIndex");
@@ -126,7 +126,11 @@ function addToCart() {
 
     console.log("new cookie added: " + getCookie(lastKey));
 
-    window.location.href = "index.html";
+    if (goToCheckout){
+        window.location.href = "checkout.html";
+    }else{
+        window.location.href = "index.html";
+    }
   }
 }
 
@@ -139,3 +143,4 @@ function selectSize(sizeSelected) {
   buyItem.setAttribute('style', '')
 
 }
+
