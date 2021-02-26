@@ -65,7 +65,7 @@ function getProduct(){
 
                 carouselDiv.setAttribute('class',`carousel-item ${firstItem ? 'active': ''}`);
                 firstItem = false;//Only the first item has to be active
-                
+
                 pictureImg.setAttribute('class','d-block img-fluid');
                 pictureImg.setAttribute("style", "object-fit:contain;max-height:240px");
 
