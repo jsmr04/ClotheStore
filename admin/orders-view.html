@@ -7,7 +7,7 @@
     <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Jhason">
     <link rel="icon" href="../media/favicon.png">
 
-    <title>Admin - Products</title>
+    <title>Admin - Orders</title>
 
     <!-- CSS framework -->
 
@@ -21,6 +21,10 @@
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="../css/menu.min.css" rel="stylesheet">
+    <link href="../css/admin/all.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Firebase -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -28,9 +32,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-
-    <!-- Custom styles for this page -->
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -52,7 +53,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="../admin/home.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -75,7 +76,7 @@
             </li>
 
             <!-- Nav Item - products -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="../admin/products.html">
                     <i class="fab fa-fw fa-product-hunt"></i>
                     <span>Products</span>
@@ -91,7 +92,7 @@
             </div>
 
             <!-- Nav Item - Orders -->
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="../admin/orders.html">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Orders</span></a>
@@ -154,6 +155,8 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -179,45 +182,45 @@
 
                 <div class="container-fluid">
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Products Overview</h6>
-                            <a class="btn btn-primary" role="button" data-toggle="modal" data-target="#modal-product" href="#" onclick="newProduct()"><i class="fa fa-plus icon"></i> New</a>
+                        <div class="card-header py-3 d-flex flex-row align-items-center">
+                            <!-- Jose/ do this - Status Icon - change the color by providing a background style -->
+                            <!-- -->
+                            <div id="status=icon" class="status-icon"></div>
+                            <h6 class="m-0 font-weight-bold text-primary">Order </h6>
+                            <h6 class="m-0 font-weight-bold text-primary" id="order-number"> #1234</h6>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Classification</th>
-                                            <th>Category</th>
-                                            <th>Size</th>
-                                            <th>Price</th>
-                                            <th>Stock</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Classification</th>
-                                            <th>Category</th>
-                                            <th>Size</th>
-                                            <th>Price</th>
-                                            <th>Stock</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody id="productBody">
-                                        <!-- Dynamic rows -->
-                                    </tbody>
-                                </table>
+                        <div class="card-body rel">
+                            <div class="row row-1 ">
+                                <div class="col-lg-5 border row-1">
+                                    <div class="box">
+                                        <h4 class="m-0 font-weight-bold text-primary text-center">Details </h4>
+                                    </div>
+                                    <div class="d-flex cont ">
+                                        <div class="bor">Address: </div>
+                                        <div class="m-left cont bor">1588 Jane street </div>
+                                    </div>
+                                    <div class="d-flex cont ">
+                                        <div class="bor">Address: </div>
+                                        <div class="m-left cont bor">1588 Jane street </div>
+                                    </div>
+                                    <div class="d-flex cont ">
+                                        <div class="bor">Address: </div>
+                                        <div class="m-left cont bor">1588 Jane street </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 border row-1">
+                                    <div class="box">
+                                        <h4 class="m-0 font-weight-bold text-primary text-center">Items </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-11 row-1 m-top-1">
+                                    <div class="box">
+                                        <h4 class="m-0 font-weight-bold text-primary text-center">Completed</h4>
+                                        <h4 class="m-0 font-weight-bold text-danger text-center">Pending</h4>
+                                        <h4 class="m-0 font-weight-bold text-warning text-center">Ready to be Shipped</h4>
+                                        <h4 class="m-0 font-weight-bold text-success text-center">Shipped</h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,112 +269,6 @@
         </div>
     </div>
 
-    <!-- Modal Status-->
-    <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    Do you want to change the status of this item?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateStatus()">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal New Product-->
-    <div class="modal fade" id="modal-product" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">New Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <form class="needs-validation" novalidate>
-                            <div class="mb-3">
-                                <label for="productIdInput" class="form-label">ID</label>
-                                <div class="input-group">
-                                    <input maxlength="10" type="text" class="form-control" id="productIdInput" aria-describedby="productHelp" placeholder="Product id" required>
-                                    <div class="invalid-feedback">
-                                        Required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productNameInput" class="form-label">Name</label>
-                                <input maxlength="30" type="text" class="form-control" id="productNameInput" aria-describedby="productHelp" placeholder="Product name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="productClasSelect" class="form-label">Classification</label>
-                                <select class="form-control" id="productClasSelect" aria-describedby="productHelp" def>
-                                    <option selected></option>
-                                    <option>Women</option>
-                                    <option>Men</option>
-                                    <option>Kids</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productCatSelect" class="form-label">Category</label>
-                                <select class="form-control" id="productCatSelect" aria-describedby="productHelp">
-                                    </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productSizeSelect" class="form-label">Size</label>
-                                <select multiple class="form-control" id="productSizeSelect" aria-describedby="productHelp">
-                                    <option>XS</option>
-                                    <option>S</option>
-                                    <option>M</option>
-                                    <option>L</option>
-                                    <option>XL</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productDescInput" class="form-label">Description</label>
-                                <textarea rows="3" class="form-control" id="productDescInput" placeholder="Add a description"></textarea>
-                            </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label for="productPriceInput" class="form-label">Price</label>
-                                    <input type="number" class="form-control" id="productPriceInput" aria-describedby="productHelp" placeholder="$">
-                                </div>
-                                <div class="col mb-3">
-                                    <label for="productStockInput" class="form-label">Stock</label>
-                                    <input type="number" class="form-control" id="productStockInput" aria-describedby="productHelp" placeholder="Inventory">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="productStockInput" class="form-label">Picture</label>
-                                <input id="productPictureInput" class="form-control" type="file" accept="image/png, image/jpeg" readonly>
-                            </div>
-
-                            <div id="list-pics">
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveProduct()">Save</button>
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -389,7 +286,6 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
-    <script src="../js/product.js"></script>
 
     <script>
         checkAuth();
