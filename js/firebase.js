@@ -1,3 +1,4 @@
+
 (function () {
   "use strict";
 
@@ -52,7 +53,7 @@ function checkAuth(fromIndex = false) {
     if (user) {
       userName.innerHTML = user.email;
       //Only for index
-      console.log(divLoggedIn)
+      //console.log(divLoggedIn)
       if (divLoggedIn != undefined) {
         divLoggedIn.removeAttribute('hidden');
       }

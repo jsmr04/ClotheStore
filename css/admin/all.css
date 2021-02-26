@@ -11,6 +11,10 @@
     margin-top: 20px;
 }
 
+.a-card:hover {
+    text-decoration: none;
+}
+
 .middle {
     width: 90%;
     height: auto;
@@ -44,44 +48,3 @@
 
 /* Using above*/
 
-
-
-.top-box {
-    margin: 20px; 
-}
-
-
-.down {
-    position: absolute;
-    bottom: 0;
-}
-#item-price {
-    color:#5a2d82;
-    font-style: oblique;
-}
-
-.btn-1 {
-    padding: 10px;
-    width: 100%;
-}
-
-.btn-toolbar{
-    color: #5a2d82;
-    padding: 5px 20px;
-    border: 2px solid #5a2d82;
-}
-.btn-toolbar:hover{
-    color: white;
-    background-color: #5a2d82;
-}
-.btn-toolbar.focus,
-.btn-toolbar:focus{
-    color: #fff;
-    background-color: #5a2d82;
-    border-color: #5a2d82;
-    box-shadow: 0 0 0 .2rem rgba(90, 45, 130, .5)!important;
-}
-.btn-toolbar:active{
-    color: white;
-    background-color: #5a2d82;
-}

@@ -10,7 +10,7 @@
     <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Deleon">
     <link rel="icon" href="../media/favicon.png">
 
-    <title>Clothe Store - Sign Up</title>
+    <title>Clothe Store - User Profile</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,10 +24,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 
     <!-- Custom styles for this template-->
-    <link type="text/css" href="../css/all.css" rel="stylesheet">
-    <link type="text/css" href="../css/login.css" rel="stylesheet">
     <link href="../css/menu.min.css" rel="stylesheet">
     <link href="../css/menu.css" rel="stylesheet">
+    <link href="../css/user.css" rel="stylesheet">
 
 </head>
 
@@ -92,7 +91,7 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle nav-top" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+                            <a class="nav-link dropdown-toggle nav-top" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-bag icon-size"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">1</span>
@@ -120,11 +119,12 @@
                             </div>
                         </li>
 
-                        
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span id="userName" class="mr-2 d-none d-lg-inline text-gray-100 small"></span>
                                 <img class="img-profile rounded-circle" src="../media/undraw_profile_2.svg">
                             </a>
@@ -160,40 +160,78 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid box">
-                    <form id="form-register" class="form-register" onsubmit="return createNewAccount()">
-                        <img  class="form-img mb-4" src="../media/logo-favicon.png" alt="" width="72" height="72">
-                        <div id="errorMessage" style="color: red; font-size: 16;" hidden></div>
-                        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-                        <div class="form-label-group">
-                            <input type="text" id="inputFirstName" class="form-control form-input" placeholder="First Name" required autofocus>
-                            <label for="inputFirstName">First Name</label>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-50">
+                            <div class="container-cart bg-lightgrey shadow-sm ">
+                                <div class="text-center m-top m-bottom">
+                                    <h4>User Profile</h4>
+                                </div>
+                                <hr class="solid ">
+                                <div class="form-group d-flex cont">
+                                    <div class="label-user" >
+                                        First Name:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="firstName" class="form-control form-input" type="text" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex cont ">
+                                    <div class="label-user">
+                                        Last Name:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="lastName" class="form-control form-input" type="text" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex cont">
+                                    <div class="label-user">
+                                        Email:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="email" class="form-control form-input" type="email" disabled>
+                                    </div>
+                                </div>
+                                <div class="text-center m-top m-bottom">
+                                    <h4>Shipping Address</h4>
+                                </div>
+                                <hr>
+                                <div class="form-group d-flex cont">
+                                    <div class="label-user">
+                                        Address:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="address" class="form-control form-input" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex cont ">
+                                    <div class="label-user">
+                                        Prov/State:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="state" class="form-control form-input" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex cont">
+                                    <div class="label-user">
+                                        Country:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="country" class="form-control form-input" type="email">
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex cont">
+                                    <div class="label-user"">
+                                        Postal Code:
+                                    </div>
+                                    <div class="cont">
+                                        <input id="zip" class="form-control form-input" type="email">
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary btn-lg form-btn btn-block m-bottom m-top" href="#" onclick="edit()"" data-toggle="modal" data-target="#editModal"">Save</a>
+                            </div>
                         </div>
-                
-                        <div class="form-label-group">
-                            <input type="text" 
-                            id="inputLastName" class="form-control form-input" placeholder="Last Name" required autofocus>
-                            <label for="inputLastName">Last Name</label>
-                        </div>
-                
-                        <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required autofocus>
-                            <label for="inputEmail">Email address</label>
-                        </div>
-                
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control form-input" placeholder="Password" required>
-                            <label for="inputPassword">Password</label>
-                        </div>
-                
-                        <div class="form-label-group">
-                            <input type="Password" id="inputConfirmPassword" class="form-control form-input" placeholder="Confirm Password" required>
-                            <label for="inputConfirmPassword">Confirm Password</label>
-                        </div>
-
-                        <button class="btn btn-lg form-btn btn-block" type="submit">Create account</button>
-                        <p class="mt-5 mb-3 text-muted">&copy; Team South - 2021</p>
-                    </form>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -220,6 +258,44 @@
         <i class="fas fa-angle-up "></i>
     </a>
 
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true ">
+        <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Are you ready to Leave?</h5>
+                    <button class="close " type="button " data-dismiss="modal " aria-label="Close ">
+                        <span aria-hidden="true ">×</span>
+                    </button>
+                </div>
+                <div class="modal-body ">Select "Logout " below if you are ready to end your current session.</div>
+                <div class="modal-footer ">
+                    <button class="btn btn-secondary " type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary " href="../index.html" onclick="signOut(true)">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal-->
+    <div class="modal fade" id="editModal" tabindex="-1 " role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true ">
+        <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="exampleModalLabel ">Confirm changes</h5>
+                    <button class="close " type="button " data-dismiss="modal " aria-label="Close ">
+                        <span aria-hidden="true ">×</span>
+                    </button>
+                </div>
+                <div class="modal-body ">Do you want to confirm your changes?</div>
+                <div class="modal-footer ">
+                    <button class="btn btn-secondary " type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary " href="" onclick="save()">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js "></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
@@ -231,7 +307,11 @@
     <script src="../js/menu.min.js "></script>
 
     <script src="../js/firebase.js"></script>
-    <script src="../js/signup.js"></script>
+    <script src="../js/user-profile.js"></script>
+
+    <script>
+        checkAuth();
+    </script>
 
 </body>
 

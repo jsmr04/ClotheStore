@@ -1,21 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Deleon">
     <link rel="icon" href="../media/favicon.png">
 
-    <title>Registration</title>
+    <title>Clothe Store - Sign Up</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link type="text/css" href="../css/all.css" rel="stylesheet">
-    <link type="text/css" href="../css/login.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Firebase -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -23,67 +22,235 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+    <!-- Custom styles for this template-->
+    <link type="text/css" href="../css/all.css" rel="stylesheet">
+    <link type="text/css" href="../css/login.css" rel="stylesheet">
+    <link href="../css/menu.min.css" rel="stylesheet">
+    <link href="../css/menu.css" rel="stylesheet">
+
 </head>
 
-<body>
-    <form id="form-register" class="form-register" onsubmit="return saveUserInfo()">
-        <div id="errorMessage" style="color: red; font-size: 16;" hidden></div>
-        <h1 class="h3 mb-3 font-weight-normal">Customer Information</h1>
-        <div class="form-label-group">
-            <input type="text" id="inputFirstName" class="form-control form-input" placeholder="First Name" required
-                autofocus>
-            <label for="inputFirstName">First Name</label>
-        </div>
+<body id="page-top">
 
-        <div class="form-label-group">
-            <input type="text" id="inputLastName" class="form-control form-input" placeholder="Last Name" required
-                autofocus>
-            <label for="inputLastName">Last Name</label>
-        </div>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-        <div class="form-label-group">
-            <input type="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required
-                autofocus readonly>
-            <label for="inputEmail">Email address</label>
-        </div>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <div class="form-label-group">
-            <input type="text" id="inputAddress" class="form-control form-input" placeholder="Address" required>
-            <label for="inputAddress">Address</label>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="inputCountry" class="form-label">Country</label>
-                    <select id="inputCountry" class="form-control form-input" placeholder="Zip Code" required>
+            <!-- Main Content -->
+            <div id="content">
 
-                    </select>
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand bg-primary topbar mb-4 fixed-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none text-light rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <div class="flex-grow-0">
+                        <a class="navbar-brand nav-top" href="../index.html">Clothe <b>Store</b></a>
+                    </div>
+
+                    <form class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search " >
+                        <div class="input-group" hidden>
+                            <input type="text" class="form-control bg-light border-0 small search-input" placeholder="What are you searching for ?" aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append ">
+                                <button class="btn btn-primary search-input" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto navbar-right">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle nav-top" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+                                <i class="fas fa-shopping-bag icon-size"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">1</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Your Shopping cart
+                                </h6>
+                                <div class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-sm" src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Autumn Men Pants Hip Hop Harem Joggers Pants 2020 New Male Trousers Mens Joggers Solid Multi-pocket Pants Sweatpants M-4XL
+                                        </div>
+                                        <div class="medium "><b>$25.99</b> </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="text-primary align-content-lg-start"><b>SubTotal:</b></div>
+                                    <div class="align-right medium text-dark" id="cart-subtotal"><b>$25.99</b></div>
+                                </div>
+                                <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#"><b>Go to Cart</b></a>
+                            </div>
+                        </li>
+
+                        
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" hidden>
+                                <span id="userName" class="mr-2 d-none d-lg-inline text-gray-100 small"></span>
+                                <img class="img-profile rounded-circle" src="../media/undraw_profile_2.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <div id="userLoggedIn" hidden>
+                                    <a class="dropdown-item" href="user-account.html">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        My Orders
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="# " data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                                <div id="userNotLoggedIn" hidden>
+                                    <a class="dropdown-item" href="./pages/login.html">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Sign In
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid box">
+                    <form id="form-register" class="form-register" onsubmit="return saveUserInfo()">
+                        <img  class="form-img mb-4" src="../media/logo-favicon.png" alt="" width="72" height="72">
+                        <div id="errorMessage" style="color: red; font-size: 16;" hidden></div>
+                        <h1 class="h3 mb-3 font-weight-normal">Customer Information</h1>
+                        <div class="form-label-group">
+                            <input type="text" id="inputFirstName" class="form-control form-input" placeholder="First Name" required
+                                autofocus>
+                            <label for="inputFirstName">First Name</label>
+                        </div>
+                
+                        <div class="form-label-group">
+                            <input type="text" id="inputLastName" class="form-control form-input" placeholder="Last Name" required
+                                autofocus>
+                            <label for="inputLastName">Last Name</label>
+                        </div>
+                
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required
+                                autofocus readonly>
+                            <label for="inputEmail">Email address</label>
+                        </div>
+                
+                        <div class="form-label-group">
+                            <input type="text" id="inputAddress" class="form-control form-input" placeholder="Address" required>
+                            <label for="inputAddress">Address</label>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="inputCountry" class="form-label">Country</label>
+                                    <select id="inputCountry" class="form-control form-input" placeholder="Zip Code" required>
+                
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label">State / Province</label>
+                                    <input type="text" id="inputState" class="form-control form-input" placeholder="" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="">Zip</label>
+                                    <input type="text" id="inputZip" class="form-control form-input" placeholder="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg form-btn btn-block" type="submit">Save</button>
+                    </form>
                 </div>
+                <!-- /.container-fluid -->
             </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label">State / Province</label>
-                    <input type="text" id="inputState" class="form-control form-input" placeholder="" required>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer id="footer " class="sticky-footer bg-primary ">
+                <div class="container ">
+                    <div class="copyright text-center my-auto text-light ">
+                        <span>Copyright &copy; Team South 2021 </span>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="">Zip</label>
-                    <input type="text" id="inputZip" class="form-control form-input" placeholder="" required>
-                </div>
-            </div>
+            </footer>
+            <!-- End of Footer -->
+
         </div>
+        <!-- End of Content Wrapper -->
 
+    </div>
+    <!-- End of Page Wrapper -->
 
-        <!-- <div class="custom-control custom-checkbox mb-3 ">
-            <input class="custom-control-input" type="checkbox" id="checkbox1">
-            <label class="custom-control-label" for="checkbox1">I agree to the Term of Use</label>
-        </div> -->
-        <button class="btn btn-lg form-btn btn-block" type="submit">Save</button>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded " href="#page-top ">
+        <i class="fas fa-angle-up "></i>
+    </a>
 
-        <script src="../js/firebase.js"></script>
-        <script src="../js/countries.js"></script>
-        <script src="../js/customer-info.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../vendor/jquery/jquery.min.js "></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js "></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js "></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/menu.min.js "></script>
+
+    <script src="../js/firebase.js"></script>
+    <script src="../js/countries.js"></script>
+    <script src="../js/customer-info.js"></script>
+
 </body>
 
 </html>

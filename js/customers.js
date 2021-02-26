@@ -12,7 +12,6 @@ function getCustomers() {
             let tr = document.createElement("tr");
             tr.setAttribute("id", "row-" + counter);
 
-            let childKey = childSnapshot.key;
             let childData = childSnapshot.val();
 
             let tdIndex = document.createElement("td");
@@ -56,6 +55,8 @@ function getCustomers() {
             tr.appendChild(tdOrders);
 
             tableBody.appendChild(tr);
+
+            counter++;
         });
         //This script below enables the Jquery to work properly(search, filter, pagination)
         $(document).ready(function() {

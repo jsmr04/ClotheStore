@@ -9,12 +9,12 @@
 /* Confirm Button purple */
 
 .form-btn {
-    background-color: #5a2d82;
-    color: white;
+    background-color: #5a2d82!important;
+    color: white!important;
 }
 
 .form-btn:hover {
-    background-color: #7d41b1;
+    background-color: #7d41b1!important;
 }
 
 
