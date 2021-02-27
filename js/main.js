@@ -1,3 +1,10 @@
+
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  })
+
 let categories = [];
 let urlParams = new URLSearchParams(window.location.search);
 
@@ -67,7 +74,10 @@ function fillClassificationDropdown() {
       );
 
       li.appendChild(a);
-      cl.dropdown.appendChild(li);
+
+      if (cl.dropdown != undefined) {
+        cl.dropdown.appendChild(li);
+      }
     });
   });
 }
@@ -78,42 +88,47 @@ function fillLeftPanel() {
   let leftPanelList = document.getElementById("leftPanelList");
   let title;
 
-  //All is default
-  classification = paramClass == undefined ? "all" : paramClass;
-  switch (classification) {
-    case "women":
-      title = "Women Clothes";
-      type = "women";
-      break;
-    case "men":
-      title = "Men Clothes";
-      type = "men";
-      break;
-    case "kids":
-      title = "Kids Clothes";
-      type = "kids";
-      break;
-    case "all":
-      title = "All Clothes";
-      break;
+  if (leftPanelTitle != undefined) {
+    //All is default
+    classification = paramClass == undefined ? "all" : paramClass;
+    switch (classification) {
+      case "women":
+        title = "Women Clothes";
+        type = "women";
+        break;
+      case "men":
+        title = "Men Clothes";
+        type = "men";
+        break;
+      case "kids":
+        title = "Kids Clothes";
+        type = "kids";
+        break;
+      case "all":
+        title = "All Clothes";
+        break;
+    }
+
+    //Panel title
+    leftPanelTitle.innerText = title;
+
+    //Items
+    categories.forEach((ct) => {
+      let a = document.createElement("a");
+      let urlString = classification == 'all' 
+      ? `index.html?category=${ct.id}` 
+      : `index.html?classification=${classification}&category=${ct.id}`;
+
+      a.innerText = ct.name;
+      a.setAttribute("class", "list-group-item");
+      a.setAttribute(
+        "href",
+        urlString
+      );
+
+      leftPanelList.appendChild(a);
+    });
   }
-
-  //Panel title
-  leftPanelTitle.innerText = title;
-
-  //Items
-  categories.forEach((ct) => {
-    let a = document.createElement("a");
-
-    a.innerText = ct.name;
-    a.setAttribute("class", "list-group-item");
-    a.setAttribute(
-      "href",
-      `index.html?classification=${classification}&category=${ct.id}`
-    );
-
-    leftPanelList.appendChild(a);
-  });
 }
 
 function fillBanners() {
@@ -204,28 +219,38 @@ function fillShoppingCart() {
       }
     });
     inflateShoppingCart();
+    inflateMainShoppingCart();
   });
 }
 
 function inflateShoppingCart() {
+  const shippingFee = 9.99;
+
   let shoppingCart = document.getElementById("shoppingCart");
   let totalCart = document.getElementById("totalCart");
+  let summarySubtotal = document.getElementById("summarySubtotal");
+  let summaryShippingFee = document.getElementById("summaryShippingFee");
+  let summaryTaxes = document.getElementById("summaryTaxes");
+  let summaryTotal = document.getElementById("summaryTotal");
+
   let totalFooter = 0;
 
   cartItemList.forEach((i) => {
-    let product = shoppingCartProducts.filter((p) => p.productId == i.productId)[0];
+    let product = shoppingCartProducts.filter(
+      (p) => p.productId == i.productId
+    )[0];
 
     if (product != undefined) {
-        console.log('product')
-        console.log(product)
-        console.log(i)
+      console.log("product");
+      console.log(product);
+      console.log(i);
 
-        let itemDiv = document.createElement("div");
-        let itemImgDiv = document.createElement("div");
-        let itemImg = document.createElement("img");
-        let itemBodyDiv = document.createElement("div");
-        let itemTextDiv = document.createElement("div");
-        let itemPriceDiv = document.createElement("div");
+      let itemDiv = document.createElement("div");
+      let itemImgDiv = document.createElement("div");
+      let itemImg = document.createElement("img");
+      let itemBodyDiv = document.createElement("div");
+      let itemTextDiv = document.createElement("div");
+      let itemPriceDiv = document.createElement("div");
       //Main div
       itemDiv.setAttribute("class", "dropdown-item d-flex align-items-center");
 
@@ -233,15 +258,9 @@ function inflateShoppingCart() {
       itemImgDiv.setAttribute("class", "dropdown-list-image mr-3");
       itemImg.setAttribute("class", "rounded-sm");
 
-      itemImg.setAttribute(
-        "style",
-        "object-fit:contain;max-height:200px"
-      );
+      itemImg.setAttribute("style", "object-fit:contain;max-height:200px");
 
-      itemImg.setAttribute(
-        "src",
-        `data:image/png;base64,${product.picture}`
-      );
+      itemImg.setAttribute("src", `data:image/png;base64,${product.picture}`);
 
       //Body
       itemTextDiv.setAttribute("class", "text-truncate");
@@ -252,7 +271,7 @@ function inflateShoppingCart() {
       totalFooter += total; //Acumulate total
 
       itemPriceDiv.setAttribute("class", "medium");
-      itemPriceDiv.innerHTML = `<b>C$${total}</b>`;
+      itemPriceDiv.innerHTML = `<b>C${formatter.format(total)}</b>`;
       itemBodyDiv.appendChild(itemPriceDiv);
 
       itemImgDiv.appendChild(itemImg);
@@ -263,7 +282,14 @@ function inflateShoppingCart() {
     }
   });
 
-  totalCart.innerText =`C$${totalFooter}`;
+  totalCart.innerText = `C${formatter.format(totalFooter)}`;
+
+  //Order Summary
+  summarySubtotal.innerText = `C${formatter.format(totalFooter)}`;
+  summaryShippingFee.innerText = `C${formatter.format(shippingFee)}`;
+  summaryTaxes.innerText = `C${formatter.format(0)}`;
+  summaryTotal.innerText = `C${formatter.format(totalFooter + shippingFee)}`;
+
 }
 
 function searchProduct() {

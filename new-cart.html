@@ -14,12 +14,21 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/menu.min.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
     <link href="css/cart.css" rel="stylesheet">
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 
 </head>
 
@@ -36,43 +45,49 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand bg-primary topbar mb-4 fixed-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none text-light rounded-circle mr-3">
+                    <button id="sidebarToggleTop" class="btn btn-link text-light d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Topbar Search -->
                     <div class="flex-grow-0">
-                        <a class="navbar-brand nav-top" href="index.html">Clothe <b>Store</b></a>
+                        <a class="navbar-brand nav-top" href="index.html">
+                            Clothe
+                            <b>Store</b>
+                        </a>
                     </div>
-
-                    <form class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search ">
+                    <form id="form-search" onsubmit="return searchProduct()"
+                        class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small search-input" placeholder="What are you searching for ?" aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append ">
-                                <button class="btn btn-primary search-input" type="button">
+                            <input id="productNameText" type="text"
+                                class="form-control bg-light border-0 small search-input"
+                                placeholder="What are you searching for ? " aria-label="Search "
+                                aria-describedby="basic-addon2 ">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary search-input" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto navbar-right">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false ">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown ">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <input type="text " class="form-control bg-light border-0 small"
+                                            placeholder="Search for... " aria-label="Search"
+                                            aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-primary" type="button ">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -80,63 +95,86 @@
                                 </form>
                             </div>
                         </li>
-
-
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle nav-top" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle nav-top" href="# " id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-bag icon-size"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">1</span>
+                                <span id="cartItems" class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Your Shopping cart
-                                </h6>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">Your Shopping cart</h6>
+                                <div id="shoppingCart">
+                                    <!-- <div class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-sm" src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg" alt="">
+                                        <img class="rounded-sm"
+                                            src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg "
+                                            alt=" ">
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Autumn Men Pants Hip Hop Harem Joggers Pants 2020 New Male Trousers Mens Joggers Solid Multi-pocket Pants Sweatpants M-4XL
+                                        <div class="text-truncate">
+                                            Autumn Men Pants Hip Hop Harem Joggers Pants 2020 New
+                                            Male Trousers Mens Joggers Solid Multi-pocket Pants
+                                            Sweatpants M-4XL
                                         </div>
-                                        <div class="medium "><b>$25.99</b> </div>
+                                        <div class="medium">
+                                            <b>$25.99</b>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                </div>
+
+                                <div class="dropdown-item d-flex align-items-center" href="# ">
+                                    <div class="text-primary align-content-lg-start">
+                                        <b>SubTotal:</b>
+                                    </div>
+                                    <div class="align-right medium text-dark" id="cart-subtotal">
+                                        <b id="totalCart"></b>
                                     </div>
                                 </div>
-                                <div class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="text-primary align-content-lg-start"><b>SubTotal:</b></div>
-                                    <div class="align-right medium text-dark" id="cart-subtotal"><b>$25.99</b></div>
-                                </div>
-                                <a class="dropdown-item text-center large bg-checkout-warning text-uppercase" href="#"><b>Go to Cart</b></a>
+                                <a class="dropdown-item text-center large bg-checkout-warning text-uppercase"
+                                    href="new-cart.html">
+                                    <b>Go to Cart</b>
+                                </a>
                             </div>
                         </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-100 small">John Doe</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span id="userName" class="mr-2 d-none d-lg-inline text-gray-100 small"></span>
                                 <img class="img-profile rounded-circle" src="media/undraw_profile_2.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> My Orders
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                                </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <div id="userLoggedIn" hidden>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        My Orders
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="# " data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                                <div id="userNotLoggedIn" hidden>
+                                    <a class="dropdown-item" href="./pages/login.html">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Sign In
+                                    </a>
+                                </div>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -149,58 +187,40 @@
                                     <h4>Shopping cart</h4>
                                 </div>
                                 <hr class="solid ">
-                                <div class="container-cart ">
-                                    <div class="item-cel d-flex ">
-                                        <div class="item-img mr-3 corner-cel">
-                                            <img class="rounded-sm mr-3 " id="item-img" src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg " alt=" ">
-                                        </div>
-                                        <div class="flex-column mr-3 middle-cel">
-                                            <div class="text-truncate m-bottom" id="item-description"><b>Aututext-darkmn Men Pants Hip Hop AutMen Pants Hip Hop Autumn Men Pants Hip Hop</b></div>
-                                            <div class="m-bottom">Size:
-                                                <b id="item-size">M</b>
+                                <div id="mainContainer">
+                                    <!-- <div class="container-cart">
+                                        <div class="item-cel d-flex ">
+                                            <div class="item-img mr-3 corner-cel">
+                                                <img class="rounded-sm mr-3" id="item-img"
+                                                    src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg "
+                                                    alt=" ">
                                             </div>
-                                            <div class="d-flex">
-                                                <div style="text-align: center; margin-top:5px; margin-right: 5px;">Qt: </div>
-                                                <select class="form-control item-select" id="item-qtd">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
+                                            <div class="flex-column mr-3 middle-cel">
+                                                <div class="text-truncate m-bottom" id="item-description">
+                                                    <b>Aututext-darkmn Men Pants Hip Hop AutMen Pants Hip Hop Autumn Men
+                                                        Pants Hip Hop</b></div>
+                                                <div class="m-bottom">Size:
+                                                    <b id="item-size">M</b>
+                                                </div>
+                                                <div class="d-flex">
+                                                    <div style="text-align: center; margin-top:5px; margin-right: 5px;">
+                                                        Qt: </div>
+                                                    <input type="number" class="form-control item-select" id="item-qtd"
+                                                        min="1" max="100">
+                                                </div>
                                             </div>
+                                            <div class="divider-vertical"></div>
+                                            <div class="ml-3 item-price corner-cel mr-3"><b>C$25.99</b></div>
+                                            <a class="item-icon-delete mr-3" onclick=""><i class="fas fa-trash"></i></a>
                                         </div>
-                                        <div class="divider-vertical"></div>
-                                        <div class="ml-3 item-price corner-cel mr-3"><b>C$25.99</b></div>
-                                        <a class="item-icon-delete mr-3" onclick=""><i class="fas fa-trash"></i></a>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="container-cart ">
-                                    <div class="item-cel d-flex">
-                                        <div class="item-img mr-3 corner-cel">
-                                            <img class="rounded-sm mr-3 " id="item-img" src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg " alt=" ">
-                                        </div>
-                                        <div class="flex-column mr-3 middle-cel">
-                                            <div class="text-truncate m-bottom" id="item-description"><b>Aututext-darkmn Men Pants Hip Hop AutMen Pants Hip Hop Autumn Men Pants Hip Hop</b></div>
-                                            <div class="m-bottom">Size:
-                                                <b id="item-size">P</b>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div style="text-align: center; margin-top:5px; margin-right: 5px;">Qt: </div>
-                                                <select class="form-control item-select" id="item-qtd">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="divider-vertical"></div>
-                                        <div class="ml-3 item-price corner-cel mr-3"><b>C$25.99</b></div>
-                                        <a class="item-icon-delete mr-3" onclick=""><i class="fas fa-trash"></i></a>
-                                    </div>
-                                </div>
+                          
                                 <hr class="solid ">
                                 <div class="d-flex m-bottom m-top cont">
                                     <div class="mr-3 ">Postal Code: </div>
-                                    <div class="cont"><input class="form-control border-0 input-zip text-uppercase" type=" text " placeholder="Postal code "></div>
+                                    <div class="cont"><input class="form-control border-0 input-zip text-uppercase"
+                                            type=" text " placeholder="Postal code "></div>
                                     <div class="right-align cont" id="time">6-10 business days</div>
                                 </div>
                                 <div class="d-flex m-bottom m-top cont ">
@@ -208,7 +228,7 @@
                                         <h4><b>SubTotal:</b></h4>
                                     </div>
                                     <div class="cont right-align">
-                                        <h4><b>C$51.98</b></h4>
+                                        <h4><b id="subtotalAmount"></b></h4>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +246,9 @@
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
-                                        <h5><b><div id="cart-total">C$51.98</div></b></h5>
+                                        <h5><b>
+                                                <div id="summarySubtotal">C$51.98</div>
+                                            </b></h5>
                                     </div>
                                 </div>
                                 <div class="d-flex cont m-bottom">
@@ -236,7 +258,9 @@
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
-                                        <h5><b><div id="">C$9.99</div></b></h5>
+                                        <h5><b>
+                                                <div id="summaryShippingFee">C$9.99</div>
+                                            </b></h5>
                                     </div>
                                 </div>
                                 <div class="d-flex cont">
@@ -246,7 +270,9 @@
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
-                                        <h5><b><div id="">C$6.76</div></b></h5>
+                                        <h5><b>
+                                                <div id="summaryTaxes">C$6.76</div>
+                                            </b></h5>
                                     </div>
                                 </div>
                                 <hr class="solid ">
@@ -257,7 +283,9 @@
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
-                                        <h5><b><div id="">C$68.73</div></b></h5>
+                                        <h5><b>
+                                                <div id="summaryTotal">C$68.73</div>
+                                            </b></h5>
                                     </div>
                                 </div>
                                 <div class="cont m-bottom">
@@ -293,7 +321,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade " id="logoutModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel " aria-hidden="true ">
+    <div class="modal fade " id="logoutModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel "
+        aria-hidden="true ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
                 <div class="modal-header ">
@@ -320,6 +349,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/menu.min.js "></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
 
     <script>
