@@ -34,7 +34,7 @@ function getProduct() {
           buyModalTitle.innerText = childData["name"];
 
           itemDesc.innerText = childData["name"];
-          itemPrice.innerText = `C$${childData["price"]}`;
+          itemPrice.innerText = `C${formatter.format(childData.price)}`;
           itemDesciption.innerText = childData["description"];
 
           //Size - desactivate

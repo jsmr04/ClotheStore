@@ -27,6 +27,8 @@ function inflateMainShoppingCart() {
 
         let itemSizeDiv = document.createElement("div");
 
+        let itemPriceDiv = document.createElement("div");
+
         let itemQtyDiv = document.createElement("div");
         let itemQtyChildDiv = document.createElement("div");
         let qtyInput = document.createElement("input");
@@ -58,6 +60,11 @@ function inflateMainShoppingCart() {
         itemSizeDiv.setAttribute('class','m-bottom');
         itemSizeDiv.innerHTML = `Size: <b id="item-size">${i.size}</b>`;
         itemBodyDiv.appendChild(itemSizeDiv);
+
+        //Price 
+        itemPriceDiv.setAttribute('class','m-bottom');
+        itemPriceDiv.innerHTML = `Price: <b id="item-size">${formatter.format(product.price)}</b>`;
+        itemBodyDiv.appendChild(itemPriceDiv);
         
         //Quantity
         itemQtyDiv.setAttribute('class','d-flex');
@@ -96,7 +103,6 @@ function inflateMainShoppingCart() {
 
         itemContainerDiv.appendChild(itemItemDiv);
         mainContainer.appendChild(itemContainerDiv);
-        console.log('inflateMainShoppingCart')
       }
     });
 

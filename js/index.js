@@ -127,7 +127,7 @@ function getProducts() {
           cardBodyDiv.appendChild(titleH4);
 
           //Price
-          priceH5.innerText = `C$${childData["price"]}`;
+          priceH5.innerText = `C${formatter.format(childData.price)}`;
           cardBodyDiv.appendChild(priceH5);
 
           //Description
