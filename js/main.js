@@ -224,14 +224,8 @@ function fillShoppingCart() {
 }
 
 function inflateShoppingCart() {
-  const shippingFee = 9.99;
-
   let shoppingCart = document.getElementById("shoppingCart");
   let totalCart = document.getElementById("totalCart");
-  let summarySubtotal = document.getElementById("summarySubtotal");
-  let summaryShippingFee = document.getElementById("summaryShippingFee");
-  let summaryTaxes = document.getElementById("summaryTaxes");
-  let summaryTotal = document.getElementById("summaryTotal");
 
   let totalFooter = 0;
 
@@ -283,12 +277,6 @@ function inflateShoppingCart() {
   });
 
   totalCart.innerText = `C${formatter.format(totalFooter)}`;
-
-  //Order Summary
-  summarySubtotal.innerText = `C${formatter.format(totalFooter)}`;
-  summaryShippingFee.innerText = `C${formatter.format(shippingFee)}`;
-  summaryTaxes.innerText = `C${formatter.format(0)}`;
-  summaryTotal.innerText = `C${formatter.format(totalFooter + shippingFee)}`;
 
 }
 
