@@ -149,7 +149,6 @@ function getProducts() {
           mainDiv.appendChild(cardDiv);
           productContainer.appendChild(mainDiv);
         }
-
       });
 
       hideLoader();

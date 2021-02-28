@@ -79,7 +79,7 @@ function fillClassificationDropdown() {
         cl.dropdown.appendChild(li);
       }
     });
-  });
+  }); 
 }
 
 function fillLeftPanel() {
