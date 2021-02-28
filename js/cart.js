@@ -143,6 +143,9 @@ function removeItem(productKey, divId) {
 
   //Update cart items number
   cartItems.innerText = cartItemList.length;
+ 
+  //Fill top shopping cart
+  inflateShoppingCart();
 
   //Calculate totals
   calculateTotals() ;
