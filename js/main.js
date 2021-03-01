@@ -189,8 +189,12 @@ function fillShoppingCart() {
     });
     
     inflateShoppingCart();
-    if (typeof inflateMainShoppingCart == "function"){
+    if (typeof inflateMainShoppingCart == 'function'){
         inflateMainShoppingCart();
+    }
+
+    if (typeof inflateRightSummary == 'function'){
+        inflateRightSummary();
     }
   });
 }

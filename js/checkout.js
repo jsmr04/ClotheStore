@@ -12,8 +12,13 @@ let countryInput = document.getElementById("country");
 let cardNameInput = document.getElementById("cname");
 let cardNumberInput = document.getElementById("ccnum");
 let cardMonthInput = document.getElementById("expmonth");
-let cardYearInput = document.getElementById("expyear");
+let cardDateInput = document.getElementById("expdate");
 let cvvInput = document.getElementById("cvv");
+
+//Totals
+let taxAmountDiv = document.getElementById("taxAmount");
+let shippingFeeDiv = document.getElementById("shippingFee");
+let totalDiv = document.getElementById("total");
 
 //Prevent page reload
 let form = document.getElementById("orderForm");
@@ -48,7 +53,13 @@ function getCustomer() {
 
 
 function inflateRightSummary() {
+    const shippingFee = 9.99
+    const taxPercentage = 13;
     let mainContainer = document.getElementById("mainContainer");
+
+    let subTotal = 0;
+    let taxAmount = 0;
+    let total = 0;
   
     if (mainContainer == undefined) {
       return;
@@ -62,112 +73,81 @@ function inflateRightSummary() {
       if (product != undefined) {
         //TODO: implement this
 
-        // let itemContainerDiv = document.createElement("div");
-        // let itemItemDiv = document.createElement("div");
-        // let itemImgDiv = document.createElement("div");
-        // let itemImg = document.createElement("img");
+        let itemContainerDiv = document.createElement("div");
+        let itemImg = document.createElement("img");
+        let itemBodyDiv = document.createElement("div");
+        let itemTextDiv = document.createElement("div");
+        let itemInfoDiv = document.createElement("div");
+        let itemSizeDiv = document.createElement("div");
+        let itemPriceDiv = document.createElement("div");
+        let itemQtyDiv = document.createElement("div");
+        let itemQtyChildDiv = document.createElement("div");
+        let dividerHr = document.createElement("hr");
+
+        //Main Div
+        itemContainerDiv.setAttribute("class", "d-flex cont");
+        //Image
+        itemImg.setAttribute("style", "object-fit:contain;height: 100px; width:100px;");
+        itemImg.setAttribute("src", `data:image/png;base64,${product.picture}`);
+        //Body
+        itemBodyDiv.setAttribute("class", "flex-column col-div cont text-truncate");
+        //Name
+        itemTextDiv.setAttribute("class", "m-bottom cont");
+        itemTextDiv.innerText = product.name;
+        itemBodyDiv.appendChild(itemTextDiv);
+        //Info
+        itemInfoDiv.setAttribute("class", "d-flex m-bottom rel cont");
+        itemInfoDiv.innerText = 'Size: ';
+        //Size
+        itemSizeDiv.setAttribute("class", "font-weight-bold");
+        itemSizeDiv.setAttribute("style", "margin-left: 10px;");
+        itemSizeDiv.innerText = i.size;
+        itemInfoDiv.appendChild(itemSizeDiv);
+
+        //Amount
+        let total = Number(i.quantity) * product.price;
+        subTotal += total; //Acumulate total
+
+        itemPriceDiv.setAttribute("class", "font-weight-bold item-price right-position");
+        itemPriceDiv.innerText = `C${formatter.format(total)}`;
+        itemInfoDiv.appendChild(itemPriceDiv);
+
+        //Quantity
+        itemQtyDiv.setAttribute("class", "d-flex cont");
+        itemQtyDiv.innerText = 'Qt';
+
+        itemQtyChildDiv.setAttribute("class", "font-weight-bold");
+        itemQtyChildDiv.setAttribute("style", "margin-left: 10px;");
+        itemQtyChildDiv.innerText = i.quantity;
+
+        itemQtyDiv.appendChild(itemQtyChildDiv);
+        
+        itemBodyDiv.appendChild(itemInfoDiv);
+        itemBodyDiv.appendChild(itemQtyDiv);
+
+        itemContainerDiv.appendChild(itemImg);
+        itemContainerDiv.appendChild(itemBodyDiv);
+
+        mainContainer.appendChild(itemContainerDiv);
+        mainContainer.appendChild(dividerHr);
   
-        // let itemBodyDiv = document.createElement("div");
-        // let itemTextDiv = document.createElement("div");
-  
-        // let itemSizeDiv = document.createElement("div");
-  
-        // let itemPriceDiv = document.createElement("div");
-  
-        // let itemQtyDiv = document.createElement("div");
-        // let itemQtyChildDiv = document.createElement("div");
-        // let qtyInput = document.createElement("input");
-  
-        // let deviderDiv = document.createElement("div");
-        // let amountDiv = document.createElement("div");
-  
-        // let deleteA = document.createElement("a");
-  
-        // //Main Div
-        // itemContainerDiv.setAttribute("class", "container-cart");
-        // itemContainerDiv.setAttribute("id", `item-${i.key}`);
-        // itemItemDiv.setAttribute("class", "item-cel d-flex");
-  
-        // //Image
-        // itemImgDiv.setAttribute("class", "item-img mr-3 corner-cel");
-        // itemImg.setAttribute("class", "rounded-sm mr-3");
-        // itemImg.setAttribute("style", "object-fit:contain;max-height:200px");
-        // itemImg.setAttribute("src", `data:image/png;base64,${product.picture}`);
-        // itemImgDiv.appendChild(itemImg);
-  
-        // //Body
-        // //text
-        // itemBodyDiv.setAttribute("class", "flex-column mr-3 middle-cel");
-        // itemTextDiv.setAttribute("class", "text-truncate m-bottom");
-        // itemTextDiv.innerHTML = `<b>${product.name}</b>`;
-        // itemBodyDiv.appendChild(itemTextDiv);
-  
-        // //size
-        // itemSizeDiv.setAttribute("class", "m-bottom");
-        // itemSizeDiv.innerHTML = `Size: <b id="item-size">${i.size}</b>`;
-        // itemBodyDiv.appendChild(itemSizeDiv);
-  
-        // //Price
-        // itemPriceDiv.setAttribute("class", "m-bottom");
-        // itemPriceDiv.innerHTML = `Price: <b id="item-size">${formatter.format(
-        //   product.price
-        // )}</b>`;
-        // itemBodyDiv.appendChild(itemPriceDiv);
-  
-        // //Quantity
-        // itemQtyDiv.setAttribute("class", "d-flex");
-  
-        // itemQtyChildDiv.setAttribute(
-        //   "style",
-        //   "text-align: center; margin-top:5px; margin-right: 5px;"
-        // );
-        // itemQtyChildDiv.innerText = "Qt:";
-        // itemQtyDiv.appendChild(itemQtyChildDiv);
-  
-        // qtyInput.setAttribute("type", "number");
-        // qtyInput.setAttribute("id", `quantity-${i.key}`);
-        // qtyInput.setAttribute("class", "form-control item-select");
-        // qtyInput.setAttribute("min", "1");
-        // qtyInput.setAttribute("max", "99");
-        // qtyInput.setAttribute("value", i.quantity);
-        // qtyInput.setAttribute("onchange", `updateQuantity(${i.key}, 'quantity-${i.key}', 'amount-${i.key}')`);
-        // itemQtyDiv.appendChild(qtyInput);
-  
-        // deviderDiv.setAttribute("class", "divider-vertical");
-  
-        // //Price
-        // let total = Number(i.quantity) * product.price;
-        // //totalFooter += total; //Acumulate total
-  
-        // amountDiv.setAttribute("class", "ml-3 item-price corner-cel mr-3");
-        // amountDiv.setAttribute("id", `amount-${i.key}`);
-        // amountDiv.innerHTML = `<b>C${formatter.format(total)}</b>`;
-  
-        // //Delete
-        // deleteA.setAttribute("class", "item-icon-delete mr-3");
-        // deleteA.innerHTML = `<i onclick = "removeItem(${i.key}, 'item-${i.key}')" class="fas fa-trash"></i>`;
-  
-        // itemBodyDiv.appendChild(itemQtyDiv);
-  
-        // itemItemDiv.appendChild(itemImgDiv);
-        // itemItemDiv.appendChild(itemBodyDiv);
-        // itemItemDiv.appendChild(deviderDiv);
-        // itemItemDiv.appendChild(amountDiv);
-        // itemItemDiv.appendChild(deleteA);
-  
-        // itemContainerDiv.appendChild(itemItemDiv);
-        // mainContainer.appendChild(itemContainerDiv);
       }
     });
   
-    //calculateTotals() ;
+     //Calculate taxes
+     taxAmount = subTotal * ( taxPercentage / 100);
+     //Total
+     total = (subTotal + taxPercentage + shippingFee);
+
+     taxAmountDiv.innerText = `C${formatter.format(taxAmount)}`;
+     shippingFeeDiv.innerText = `C${formatter.format(shippingFee)}`;
+     totalDiv.innerText = `C${formatter.format(total)}`;
     
   }
 
   function saveOrder() {
-
-    console.log('HERE 1');
     console.log(cartItemList);
+    console.log(shoppingCartProducts);
 
     const shippingFee = 9.99
     const taxPercentage = 13;
@@ -184,14 +164,14 @@ function inflateRightSummary() {
             (p) => p.productId == i.productId
           )[0];
             
-          let totalItem = Number(i.quantity) * product.price;
-
+          let totalItem = 0;
           if (product != undefined) {
+            totalItem = Number(i.quantity) * product.price;
             items.push({
                 productId: i.productId,
                 quantity: i.quantity,
                 size: i.size,
-                price: p.price,
+                price: product.price,
                 subtotal: totalItem,
             });
 
@@ -200,11 +180,12 @@ function inflateRightSummary() {
     });
     //Calculate taxes
     taxAmount = subTotal * ( taxPercentage / 100);
+    //Total
     total = (subTotal + taxPercentage + shippingFee);
 
     if (items.length > 0){
         const order = {
-            user: userAuth.uid,
+            userId: userAuth.uid,
             fullName: fnameInput.value,
             email: addressInput.value,
             state: stateInput.value,
@@ -213,8 +194,7 @@ function inflateRightSummary() {
     
             cardName: cardNameInput.value,
             cardNumber: cardNumberInput.value,
-            cardMonth: cardMonthInput.value,
-            cardYear: cardYearInput.value,
+            cardExpDate: cardDateInput.value,
             cardCVV: cvvInput.value,
 
             dateTime: dateTime,
@@ -225,7 +205,21 @@ function inflateRightSummary() {
             items: items,
         }
 
+        console.log("- ORDER -");
         console.log(order);
+
+        let newOrderKey = firebase.database().ref().child('order').push().key;
+        firebase
+        .database()
+        .ref(`order/${newOrderKey}`)
+        .set(order)
+        .then(() => {
+            console.log(`Order created - ${newOrderKey}`)
+            //Clear cart (cookie)
+            setCookie("itemIndex", '', 10);
+            //Redirect to index
+            window.location.href = 'index.html';
+        })
 
     }
     

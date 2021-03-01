@@ -177,22 +177,22 @@
                                   </div>
                                   <hr>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="fname" name="firstname" placeholder="First Name">
+                                    <input class="form-control" type="text" id="fname" name="firstname" placeholder="First Name" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="email" name="email" placeholder="Last Name">
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="Last Name" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="adr" name="address" placeholder="Address">
+                                    <input class="form-control" type="text" id="adr" name="address" placeholder="Address" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="state" name="state" placeholder="State">
+                                    <input class="form-control" type="text" id="state" name="state" placeholder="State" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="country" name="country" placeholder="Country">
+                                    <input class="form-control" type="text" id="country" name="country" placeholder="Country" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="zip" name="zip" placeholder="Postal Code">
+                                    <input class="form-control" type="text" id="zip" name="zip" placeholder="Postal Code" required>
                                   </div>
                               </div>
                               <div class="divider-vertical m-top"></div>
@@ -202,16 +202,16 @@
                                   </div>
                                   <hr>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="cname" name="cardname" placeholder="Name on Card">
+                                    <input class="form-control" type="text" id="cname" name="cardname" placeholder="Name on Card" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                    <input class="form-control" maxlength="19" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="expdate" name="expdate" placeholder="MM/YY">
+                                    <input class="form-control" maxlength="5" type="text" id="expdate" name="expdate" placeholder="MM/YY" required>
                                   </div>
                                   <div class="m-bottom">
-                                    <input class="form-control" type="text" id="cvv" name="cvv" placeholder="CVV">
+                                    <input class="form-control" maxlength="3" type="text" id="cvv" name="cvv" placeholder="CVV"  required>
                                   </div>
                                   <hr>
                               </div>
@@ -226,8 +226,8 @@
                                   <h4 class=" ">Order Summary</h4>
                               </div>
                               <hr class="solid ">
-                              <div class="flex-column cont">
-                                <div class="d-flex cont ">
+                              <div id="mainContainer" class="flex-column cont">
+                                <!-- <div class="d-flex cont">
                                   <img src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg" class="" style="height: 100px; width:100px;"></img>
                                   <div class="flex-column col-div cont text-truncate">
                                       <div class="m-bottom cont">
@@ -250,8 +250,8 @@
                                       </div>
                                   </div>
                                 </div>
-                                <hr class="m-bottom">
-                                <div class="d-flex cont ">
+                                <hr class="m-bottom"> -->
+                                <!-- <div class="d-flex cont ">
                                   <img src="https://ae01.alicdn.com/kf/HTB1s4b2aULrK1Rjy0Fjq6zYXFXam/Autumn-Men-Pants-Hip-Hop-Harem-Joggers-Pants-2020-New-Male-Trousers-Mens-Joggers-Solid-Multi.jpg" class="" style="height: 100px; width:100px;"></img>
                                   <div class="flex-column col-div cont text-truncate">
                                       <div class="m-bottom cont">
@@ -274,21 +274,21 @@
                                       </div>
                                   </div>
                                 </div>
-                                <hr class="m-bottom">
+                                <hr class="m-bottom"> -->
                               </div>
                               <div class="m-bottom"  >
                                 <div class="flex-column col-div cont ">
                                   <div class="d-flex cont rel m-bottom">
                                     <div class="">Sales Tax (13%):</div>
-                                    <div class="font-weight-bold right-position item-price">C$3.10</div>
+                                    <div id="taxAmount" class="font-weight-bold right-position item-price"></div>
                                   </div>
                                   <div class="d-flex cont rel m-bottom">
                                     <div class="">Delivery:</div>
-                                    <div class="font-weight-bold right-position item-price">C$9.99</div>
+                                    <div id="shippingFee" class="font-weight-bold right-position item-price"></div>
                                   </div>
                                   <div class="d-flex cont rel m-bottom">
                                     <div class="font-weight-bold">Total:</div>
-                                    <div class="font-weight-bold right-position item-price">C$68.73</div>
+                                    <div id="total" class="font-weight-bold right-position item-price"></div>
                                   </div>
                                 </div>
                                 <hr class="col-div">
