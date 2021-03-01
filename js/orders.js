@@ -25,6 +25,7 @@ class Order {
     cardExpDate,
     cardCVV,
     subTotal,
+    shippingFee,
     tax,
     total,
     status,
@@ -45,6 +46,7 @@ class Order {
     this.cardExpDate = cardExpDate;
     this.cardCVV = cardCVV;
     this.subTotal = subTotal;
+    this.shippingFee = shippingFee;
     this.tax = tax;
     this.total = total;
     this.status = status;
@@ -87,6 +89,7 @@ function getOrders() {
         childData.cardExpDate,
         childData.cardCVV,
         childData.subTotal,
+        childData.shippingFee,
         childData.tax,
         childData.total,
         childData.status,
@@ -133,12 +136,12 @@ function fillTable() {
     let aShipping = document.createElement("a");
     aShipping.setAttribute("href", "#");
     
-    if (ol.order.status.toUpperCase() == 'PENDING'){
+    if (ol.order.status == 'PENDING'){
         aShipping.setAttribute("data-toggle", "modal");
         aShipping.setAttribute("data-target", "#shippingInfoModal");
     }
     
-    aShipping.innerHTML = `${ol.order.status.toUpperCase()}`;
+    aShipping.innerHTML = `${ol.order.status}`;
     aShipping.innerHTML = `${ol.order.address}, ${ol.order.state}, ${ol.order.zip}. ${ol.order.country}`;
     aShipping.setAttribute('onclick', `updateShippingFields(${counter})`);
     tdShippingInfo.appendChild(aShipping);
@@ -149,7 +152,7 @@ function fillTable() {
     aStatus.setAttribute("href", "#");
     aStatus.setAttribute("data-toggle", "modal");
     aStatus.setAttribute("data-target", "#changeStatusModal");
-    aStatus.innerHTML = `${ol.order.status.toUpperCase()}`;
+    aStatus.innerHTML = `${ol.order.status}`;
     aStatus.setAttribute('onclick', `updateStatusSelect(${counter})`);
     tdStatus.appendChild(aStatus);
 
