@@ -7,7 +7,7 @@
     <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Jhason">
     <link rel="icon" href="../media/favicon.png">
 
-    <title>Admin - Orders</title>
+    <title>Admin - Order</title>
 
     <!-- CSS framework -->
 
@@ -151,7 +151,7 @@
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
-                </button>
+                    </button>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -183,109 +183,60 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center">
-                            <!-- Jose/ do this - Status Icon - change the color by providing a background style -->
-                            <!-- -->
-                            <div id="status=icon" class="status-icon"></div>
-                            <h6 class="m-0 font-weight-bold text-primary">Order </h6>
-                            <h6 class="m-0 font-weight-bold text-primary" id="order-number"> #1234</h6>
+                            <a class="btn btn-form text-primary" onclick="history.back()" id="backPage" ><i class="fas fa-arrow-left"></i></a>
+                            <div id="status-icon" class=""></div>
+                            <h6 class="m-1 font-weight-bold text-primary">Order #: </h6>
+                            <h6 class="m-1 font-weight-bold text-primary" id="orderId"></h6>
                         </div>
                         <div class="card-body rel">
-                            <div class="row row-1 ">
-                                <div class="col-lg-11 row-1">
-                                    <div class="d-flex box">
-                                        <h4 class="m-0 font-weight-bold text-primary text-center">Completed</h4>
-                                        <h4 class="m-0 font-weight-bold text-danger text-center">Pending</h4>
-                                        <h4 class="m-0 font-weight-bold text-warning text-center">Ready to be Shipped</h4>
-                                        <h4 class="m-0 font-weight-bold text-success text-center">Shipped</h4>
+                            <form id="order-form" onsubmit="">
+                                <div class="row row-1 ">
+                                    <div class="col-lg-5 border row-1">
+                                            <div class="box">
+                                                <h4 class="m-0 font-weight-bold text-primary text-center">Details </h4>
+                                            </div>
+                                            <div class="middle">
+                                                <div class="d-flex cont form-group">
+                                                    <input class="form-control" type="text" id="fname" placeholder="First Name" disabled>
+                                                </div>
+                                                <div class="d-flex cont form-group">
+                                                    <input class="form-control" type="text" id="address" placeholder="Address">
+                                                </div>
+                                                <div class="d-flex cont form-group">
+                                                    <input class="form-control" type="text" id="state" placeholder="Province/State">
+                                                </div>
+                                                <div class="d-flex cont form-group">
+                                                    <input class="form-control" type="text" id="zip" placeholder="Postal Code">
+                                                </div>
+                                            </div>
                                     </div>
-                                    <div class="d-flex">
-                                        <div class="cont">
-                                            <select class="form-control" name="status" id="status">
-                                                <option>Pending</option>
-                                                <option>Ready to Ship</option>
-                                                <option>Shipped</option>
-                                                <option>Completed</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 border row-1">
-                                        <div class="box">
-                                            <h4 class="m-0 font-weight-bold text-primary text-center">Details </h4>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="d-flex cont form-group">
-                                                <input class="form-control" type="text" id="fname" placeholder="First Name" disabled>
-                                            </div>
-                                            <div class="d-flex cont form-group">
-                                                <input class="form-control" type="text" id="lname" placeholder="Last Name" disabled>
-                                            </div>
-                                            <div class="d-flex cont form-group">
-                                                <input class="form-control" type="text" id="address" placeholder="Address">
-                                            </div>
-                                            <div class="d-flex cont form-group">
-                                                <input class="form-control" type="text" id="state" placeholder="Province/State">
-                                            </div>
-                                            <div class="d-flex cont form-group">
-                                                <input class="form-control" type="text" id="zip" placeholder="Postal Code">
-                                            </div>
-                                            <div class="cont form-group">
-                                                <input class="btn btn-primary btn-lg btn-block" type="button" value="Save">
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="col-lg-5 border row-1">
+                                    <div class="col-lg-5 border row-1">
                                         <div class="box">
                                             <h4 class="m-0 font-weight-bold text-primary text-center">Items </h4>
                                         </div>
-                                        <!-- Starts the item -->
-                                        <div class="d-flex cont ">
-                                            <div class="">#: </div>
-                                            <div class="m-left cont font-weight-bold ">123 </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="">Descrip: </div>
-                                            <div class="m-left cont ">Nike shoe </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="">Size: </div>
-                                            <div class="m-left cont ">M </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="">Quantity: </div>
-                                            <div class="m-left cont font-weight-bold">1 </div>
-                                            <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
-                                        </div>
-                                        <!-- Finish the item -->
                                         <hr>
-                                        <!-- Starts the item -->
+                                        <!-- Starts the items -->
+                                        <div id="items">
+            
+                                        </div>
+                                        <!-- Finish the items -->
+                                        
                                         <div class="d-flex cont ">
-                                            <div class="">#: </div>
-                                            <div class="m-left cont font-weight-bold ">123 </div>
+                                            <div><h6 class="text-primary">Tax(13%):</h6> </div>
+                                            <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="tax"></div>
                                         </div>
                                         <div class="d-flex cont ">
-                                            <div class="">Descrip: </div>
-                                            <div class="m-left cont ">Nike shoe </div>
+                                            <div><h6 class="text-primary">Delivery:</h6> </div>
+                                            <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="delivery"></div>
                                         </div>
-                                        <div class="d-flex cont ">
-                                            <div class="">Size: </div>
-                                            <div class="m-left cont ">M </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="">Quantity: </div>
-                                            <div class="m-left cont font-weight-bold">1 </div>
-                                            <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
-                                        </div>
-                                        <!-- Finish the item -->
-                                        <hr>
                                         <div class="d-flex cont ">
                                             <div class=" text-primary"><h4 class="font-weight-bold">Total:</h4> </div>
-                                            <div class="m-left cont font-weight-bold text-dark" style="text-align: right; ">C$51.98 </div>
+                                            <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="total"></div>
                                         </div>
+                                    </div>
                                 </div>
-                                
                             </div>
-                        </div>
+                        </form>    
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -349,6 +300,7 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
+    <script src="../js/order-view.js"></script>
 
     <script>
         checkAuth();
