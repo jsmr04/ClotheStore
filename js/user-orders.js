@@ -61,7 +61,22 @@ function getOrderList(user) {
         //Status
         statusDiv.setAttribute("class", "cont rel");
         statusChildDiv.setAttribute("class", "qtt");
-        statusChildDiv.innerHTML = `<div class="align-right font-weight-bold text-success ">${childData.status.toUpperCase()}</div>`
+        switch (childData.status.toUpperCase()) {
+          case "PENDING":
+            statusChildDiv.innerHTML = `<div class="align-right font-weight-bold text-danger ">${childData.status.toUpperCase()}</div>`
+            break;
+          case "READY":
+            statusChildDiv.innerHTML = `<div class="align-right font-weight-bold text-warning">READY TO SHIP</div>`
+            break;
+          case "SHIPPED":
+            statusChildDiv.innerHTML = `<div class="align-right font-weight-bold text-success">${childData.status.toUpperCase()}</div>`
+            break;
+          case "COMPLETED":
+            statusChildDiv.innerHTML = `<div class="align-right font-weight-bold text-primary">${childData.status.toUpperCase()}</div>`
+            break;  
+          default:
+            break;
+        }
         statusDiv.appendChild(statusChildDiv);
         
 
