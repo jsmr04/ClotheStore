@@ -55,7 +55,12 @@ function getOrderList(user) {
         //items
         itemsDiv.setAttribute("class", "cont");
         itemsChildDiv.setAttribute("class", "qtt");
-        itemsChildDiv.innerHTML = `<div class="text-dark font-weight-bold text-lg">${childData.items.length} Items</div>`
+        let items = childData.items;
+        let itemsCount = 0;
+        items.forEach((i) => {
+          itemsCount = itemsCount + parseInt(i.quantity);
+        })
+        itemsChildDiv.innerHTML = `<div class="text-dark font-weight-bold text-lg">${itemsCount} Items</div>`
         itemsDiv.appendChild(itemsChildDiv);
 
         //Status
