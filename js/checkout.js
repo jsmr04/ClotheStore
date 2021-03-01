@@ -143,9 +143,9 @@ function inflateRightSummary() {
      shippingFeeDiv.innerText = `C${formatter.format(shippingFee)}`;
      totalDiv.innerText = `C${formatter.format(total)}`;
     
-  }
+}
 
-  function saveOrder() {
+function saveOrder() {
     console.log(cartItemList);
     console.log(shoppingCartProducts);
 
@@ -230,9 +230,8 @@ function inflateRightSummary() {
             //Clear cart (cookie)
             setCookie("itemIndex", '', 10);
             //Redirect to index
-            window.location.href = 'index.html';
+            window.location.href = `order-confirmation.html?orderKey=${newOrderKey}`;
         })
 
-    }
-    
+    } 
 }

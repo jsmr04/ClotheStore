@@ -9,7 +9,7 @@
     <meta name="author" content="Arthur Ataide, Jose Marmolejos and Philip Deleon">
     <link rel="icon" href="media/favicon.png">
 
-    <title>Clothe Store - Checkout</title>
+    <title>Clothe Store - Order Confirmed </title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,7 @@
     <link href="css/menu.min.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
     <link href="css/cart.css" rel="stylesheet">
+    <link href="../css/admin/all.css" rel="stylesheet">
 
     <!-- Firebase -->
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -54,8 +55,8 @@
                       </a>
                   </div>
                   <form id="form-search" onsubmit="return searchProduct()"
-                      class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search">
-                      <div class="input-group">
+                      class="flex-grow-1 d-flex d-sm-inline-block form-inline mx-lg-auto ml-auto p-5 navbar-search" >
+                      <div class="input-group" hidden>
                           <input id="productNameText" type="text"
                               class="form-control bg-light border-0 small search-input"
                               placeholder="What are you searching for ? " aria-label="Search "
@@ -166,113 +167,102 @@
 
               <!-- Begin Page Content -->
               <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex flex-row align-items-center">
-                        <!-- Jose/ do this - Status Icon - change the color by providing a background style -->
-                        <!-- -->
-                        <div id="status=icon" class="status-icon"></div>
-                        <h6 class="m-0 font-weight-bold text-primary">Order </h6>
-                        <h6 class="m-0 font-weight-bold text-primary" id="order-number"> #1234</h6>
-                    </div>
-                    <div class="card-body rel">
-                        <div class="row row-1 ">
-                            <div class="col-lg-5 border row-1">
-                                    <div class="box">
-                                        <h4 class="m-0 font-weight-bold text-primary text-center">Details </h4>
-                                    </div>
-                                    <div class="middle">
-                                        <div class="d-flex cont ">
-                                            <div class="cont">First Name: </div>
-                                            <div class="m-left cont font-weight-bold">Jhon </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class=" cont">Last Name: </div>
-                                            <div class="m-left cont font-weight-bold">Doe </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="cont">Address: </div>
-                                            <div class="m-left cont font-weight-bold">1588 Jane street </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="cont">Province: </div>
-                                            <div class="m-left cont font-weight-bold">ON </div>
-                                        </div>
-                                        <div class="d-flex cont ">
-                                            <div class="cont">Postal Code: </div>
-                                            <div class="m-left cont font-weight-bold">M8H6Y1 </div>
-                                        </div>
-                                    </div>
+                    <div class="row row-1 confir">
+                        <div class="col-lg-5 border row-1 rel">
+                            <div class="box">
+                                <h4 class="m-0 font-weight-bold text-primary text-center">Your Order has been confirmed !!!</h4>
+                                <h5 class="m-0 text-gray-500 text-center" style="font-size: 1.1em;">Thanks for your order. It will be shipped to you ASAP.</h5>
                             </div>
-                            <div class="col-lg-5 border row-1">
-                                    <div class="box">
-                                        <h4 class="m-0 font-weight-bold text-primary text-center">Items </h4>
-                                    </div>
-                                    <!-- Starts the item -->
-                                    <div class="d-flex cont ">
-                                        <div class="">#: </div>
-                                        <div class="m-left cont font-weight-bold ">123 </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Descrip: </div>
-                                        <div class="m-left cont ">Nike shoe </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Size: </div>
-                                        <div class="m-left cont ">M </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Quantity: </div>
-                                        <div class="m-left cont font-weight-bold">1 </div>
-                                        <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
-                                    </div>
-                                    <!-- Finish the item -->
-                                    <hr>
-                                    <!-- Starts the item -->
-                                    <div class="d-flex cont ">
-                                        <div class="">#: </div>
-                                        <div class="m-left cont font-weight-bold ">123 </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Descrip: </div>
-                                        <div class="m-left cont ">Nike shoe </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Size: </div>
-                                        <div class="m-left cont ">M </div>
-                                    </div>
-                                    <div class="d-flex cont ">
-                                        <div class="">Quantity: </div>
-                                        <div class="m-left cont font-weight-bold">1 </div>
-                                        <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
-                                    </div>
-                                    <!-- Finish the item -->
-                                    <hr>
-                                    <div class="d-flex cont ">
-                                        <div class=" text-primary"><h4 class="font-weight-bold">Total:</h4> </div>
-                                        <div class="m-left cont font-weight-bold text-dark" style="text-align: right; ">C$51.98 </div>
-                                    </div>
+                            <div class="middle">
+                                <hr>
+                                <div class="d-flex cont text-primary">
+                                    <div class="cont">Order #: </div>
+                                    <div class="m-left cont font-weight-bold" id="orderId">00077762</div>
+                                </div>
+                                <hr>
+                                <div class="d-flex cont ">
+                                    <div class="cont">Name: </div>
+                                    <div class="m-left cont font-weight-bold" id="fname">Jhon </div>
+                                </div>
+                                <div class="d-flex cont ">
+                                    <div class="cont">Address: </div>
+                                    <div class="m-left cont font-weight-bold" id="address">1588 Jane street </div>
+                                </div>
+                                <div class="d-flex cont ">
+                                    <div class="cont">Province: </div>
+                                    <div class="m-left cont font-weight-bold" id="state">ON </div>
+                                </div>
+                                <div class="d-flex cont ">
+                                    <div class="cont">Postal Code: </div>
+                                    <div class="m-left cont font-weight-bold" id="zip">M8H6Y1 </div>
+                                </div>
                             </div>
-                            <div class="col-lg-11 row-1 m-top-1">
-                                <div class="d-flex box">
-                                    <h4 class="m-0 font-weight-bold text-primary text-center">Completed</h4>
-                                    <h4 class="m-0 font-weight-bold text-danger text-center">Pending</h4>
-                                    <h4 class="m-0 font-weight-bold text-warning text-center">Ready to be Shipped</h4>
-                                    <h4 class="m-0 font-weight-bold text-success text-center">Shipped</h4>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="cont">
-                                        <select class="form-control" name="status" id="status">
-                                            <option>Pending</option>
-                                            <option>Ready to Ship</option>
-                                            <option>Shipped</option>
-                                            <option>Completed</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <hr>
+                            <div>
+                                <a class="btn btn-primary btn-lg btn-block" type="button" href="pages/orders.html">My Orders</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 border row-1">
+                            <div class="box">
+                                <h4 class="m-0 font-weight-bold text-primary text-center">Items </h4>
+                            </div>
+                            <hr>
+                            <!-- Starts the item -->
+                            <div id="items"></div>
+                            <!-- 
+                            <div class="d-flex cont ">
+                                <div class="">#: </div>
+                                <div class="m-left cont font-weight-bold ">123 </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Descrip: </div>
+                                <div class="m-left cont ">Nike shoe </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Size: </div>
+                                <div class="m-left cont ">M </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Quantity: </div>
+                                <div class="m-left cont font-weight-bold">1 </div>
+                                <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="d-flex cont ">
+                                <div class="">#: </div>
+                                <div class="m-left cont font-weight-bold ">123 </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Descrip: </div>
+                                <div class="m-left cont ">Nike shoe </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Size: </div>
+                                <div class="m-left cont ">M </div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class="">Quantity: </div>
+                                <div class="m-left cont font-weight-bold">1 </div>
+                                <div class="cont font-weight-bold text-dark" style="text-align: right;">C$25.99</div>
+                            </div> -->
+                            <!-- Finish the item -->
+                            <hr>
+                            <div class="d-flex cont ">
+                                <div><h6 class="text-primary">Tax(13%):</h6> </div>
+                                <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="tax"></div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div><h6 class="text-primary">Delivery:</h6> </div>
+                                <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="delivery"></div>
+                            </div>
+                            <div class="d-flex cont ">
+                                <div class=" text-primary"><h4 class="font-weight-bold">Total:</h4> </div>
+                                <div class="m-left cont font-weight-bold text-dark" style="text-align: right; " id="total"></div>
                             </div>
                         </div>
                     </div>
-                </div>
               </div>
               <!-- /.container-fluid -->
           </div>
@@ -331,7 +321,7 @@
   <!-- Main Core Data -->
   <script src="js/firebase.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/checkout.js"></script>
+  <script src="js/order-confirmation.js"></script>
 
 </body>
 
