@@ -195,7 +195,7 @@
                                             <th>Sales #</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody id="salesCatBody">
+                                    <tbody id="salesProBody">
                                         <!-- Dynamic rows -->
                                     </tbody>
                                 </table>
@@ -264,9 +264,11 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
+    <script src="../js/reports.js"></script>
 
     <script>
         checkAuth();
+        getSalesByProduct();
     </script>
 
 </body>
