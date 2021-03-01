@@ -191,9 +191,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Order Number</th>
-                                            <th>Last Name</th>
-                                            <th>Address</th>
-                                            <th>State / Province</th>
+                                            <th>Customer Name</th>
+                                            <th>Shipping Information</th>
+                                            <th>Status</th>
                                             <th class="no-sort"></th>
                                         </tr>
                                     </thead>
@@ -201,9 +201,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Order Number</th>
-                                            <th>Last Name</th>
-                                            <th>Address</th>
-                                            <th>State / Province</th>
+                                            <th>Customer Name</th>
+                                            <th>Shipping Information</th>
+                                            <th>Status</th>
                                             <th class="no-sort"></th>
                                         </tr>
                                     </tfoot>
@@ -259,6 +259,73 @@
         </div>
     </div>
 
+     <!-- Status  Modal-->
+     <div class="modal fade" id="changeStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Order Status</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="statusSelect" class="form-label">Status</label>
+                        <select class="form-control" id="statusSelect" aria-describedby="productHelp">
+                            <option>PENDING</option>
+                            <option>READY</option>
+                            <option>SHIPPED</option>
+                            <option>COMPLETED</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#" data-dismiss="modal" onclick="updateOrderStatus()">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shipping Info  Modal-->
+    <div class="modal fade" id="shippingInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Shipping Information</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="addressInput" class="form-label">Address</label>
+                            <input maxlength="30" type="text" class="form-control" id="addressInput" aria-describedby="productHelp" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="addressInput" class="form-label">State / Province</label>
+                            <input maxlength="30" type="text" class="form-control" id="stateInput" aria-describedby="productHelp" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="addressInput" class="form-label">Zip Code</label>
+                            <input maxlength="30" type="text" class="form-control" id="zipInput" aria-describedby="productHelp" placeholder="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="countrySelect" class="form-label">Country</label>
+                            <select class="form-control" id="countrySelect" aria-describedby="productHelp">
+
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#" data-dismiss="modal" onclick="updateShippingInfo()">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -276,6 +343,8 @@
 
     <!-- Product Core Data -->
     <script src="../js/firebase.js"></script>
+    <script src="../js/countries.js"></script>
+    <script src="../js/orders.js"></script>
 
     <script>
         checkAuth();
