@@ -48,7 +48,7 @@ function getCustomers() {
 
             let aOrders = document.createElement("a");
             aOrders.innerHTML = 'Orders';
-            aOrders.setAttribute("href", "orders.html");
+            aOrders.setAttribute("href", `orders.html?userId=${childSnapshot.key}`);
 
             let tdOrders = document.createElement("td");
             tdOrders.appendChild(aOrders);

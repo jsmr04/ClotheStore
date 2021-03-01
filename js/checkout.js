@@ -155,7 +155,7 @@ function saveOrder() {
     let dateTime = getDate();
     let orderId = Math.floor(Math.random() * 999999)
                     .toString()
-                    .padStart(10,'0');
+                    .padStart(6,'0');
     let items = [];
     
     let subTotal = 0;
@@ -172,6 +172,7 @@ function saveOrder() {
             totalItem = Number(i.quantity) * product.price;
             items.push({
                 productId: i.productId,
+                name: product.name,
                 quantity: i.quantity,
                 size: i.size,
                 price: product.price,
@@ -194,7 +195,8 @@ function saveOrder() {
             dateTime: dateTime,
             userId: userAuth.uid,
             fullName: fnameInput.value,
-            email: addressInput.value,
+            email: emailInput.value,
+            address: addressInput.value,
             state: stateInput.value,
             country: countryInput.value,
             zip: zipInput.value,
@@ -206,9 +208,10 @@ function saveOrder() {
 
             subTotal: subTotal,
             tax: taxAmount,
+            shippingFee: shippingFee,
             total:  total,
 
-            status: 'pending',
+            status: 'PENDING',
 
             items: items,
         }
