@@ -1,6 +1,3 @@
-
-
-
 @media (max-width: 800px) {
     .row {
         flex-direction: column;
@@ -20,6 +17,10 @@ button.bg-checkout-warning {
     border-color: #ec6b33!important;
     padding: 9px;
     font-size: 1.2em;
+}
+
+.rel{
+    position: relative;
 }
 
 .row {
@@ -58,6 +59,11 @@ button.bg-checkout-warning {
 .col-50,
 .col-75 {
     padding: 0 16px;
+}
+
+.col-div {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .container-cart {
@@ -140,6 +146,11 @@ button.bg-checkout-warning {
 
 .right-align {
     text-align: right;
+}
+
+.right-position {
+    position: absolute;
+    right: 0;
 }
 
 .cont {
