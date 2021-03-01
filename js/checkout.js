@@ -153,6 +153,9 @@ function inflateRightSummary() {
     const taxPercentage = 13;
 
     let dateTime = getDate();
+    let orderId = Math.floor(Math.random() * 999999)
+                    .toString()
+                    .padStart(10,'0');
     let items = [];
     
     let subTotal = 0;
@@ -184,7 +187,11 @@ function inflateRightSummary() {
     total = (subTotal + taxPercentage + shippingFee);
 
     if (items.length > 0){
+        
         const order = {
+
+            orderId: orderId,
+            dateTime: dateTime,
             userId: userAuth.uid,
             fullName: fnameInput.value,
             email: addressInput.value,
@@ -197,15 +204,17 @@ function inflateRightSummary() {
             cardExpDate: cardDateInput.value,
             cardCVV: cvvInput.value,
 
-            dateTime: dateTime,
             subTotal: subTotal,
             tax: taxAmount,
             total:  total,
+
+            status: 'pending',
 
             items: items,
         }
 
         console.log("- ORDER -");
+        console.log('Order Id: ' + orderId);
         console.log(order);
 
         let newOrderKey = firebase.database().ref().child('order').push().key;
