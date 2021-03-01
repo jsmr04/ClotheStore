@@ -234,7 +234,7 @@
                                 <div class="d-flex cont m-bottom">
                                     <div class="cont ">
                                         <h5>
-                                            <div id="cart-count">SubTotal (2 itens)</div>
+                                            <div id="cartItemCounter">SubTotal (2 items)</div>
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
@@ -258,7 +258,7 @@
                                 <div class="d-flex cont">
                                     <div class="cont ">
                                         <h5>
-                                            <div>Sales Taxes</div>
+                                            <div>Sales Taxes (13%)</div>
                                         </h5>
                                     </div>
                                     <div class="right-align cont ">
@@ -281,7 +281,7 @@
                                     </div>
                                 </div>
                                 <div class="cont m-bottom">
-                                    <button class="bg-checkout-warning cont">Checkout</button>
+                                    <button class="bg-checkout-warning cont" onclick="goToCheckout()">Checkout</button>
                                 </div>
                             </div>
                         </div>
@@ -313,7 +313,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade " id="logoutModal " tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel "
+    <div class="modal fade " id="logoutModal" tabindex="-1 " role="dialog " aria-labelledby="exampleModalLabel "
         aria-hidden="true ">
         <div class="modal-dialog " role="document ">
             <div class="modal-content ">
@@ -326,7 +326,7 @@
                 <div class="modal-body ">Select "Logout " below if you are ready to end your current session.</div>
                 <div class="modal-footer ">
                     <button class="btn btn-secondary " type="button " data-dismiss="modal ">Cancel</button>
-                    <a class="btn btn-primary " href="login.html ">Logout</a>
+                    <a class="btn btn-primary " href="#" onclick="signOut(true)">Logout</a>
                 </div>
             </div>
         </div>

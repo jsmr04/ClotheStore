@@ -1,3 +1,10 @@
+let urlParams = new URLSearchParams(window.location.search);
+//Getting params
+let paramNextPage;
+if (urlParams.has("nextPage")) {
+    paramNextPage = urlParams.get("nextPage");
+}
+
 //Prevent page reload
 let form = document.getElementById("form-signin");
 
@@ -12,12 +19,18 @@ function loginRequest() {
     errorMessage.setAttribute('hidden', true);
 
     firebase.auth().signInWithEmailAndPassword(email, password).then((success) => {
+
         if (lowerEmail.includes('admin')) {
             window.location.href = "../admin/home.html";
         } else {
-            window.location.href = "../index.html";
+            if (paramNextPage != undefined){
+                if (paramNextPage === 'checkout'){
+                    window.location.href = "../checkout.html";    
+                }
+            }else{
+                window.location.href = "../index.html";
+            }
         }
-
 
     }).catch((error) => {
         // Handle Errors here.

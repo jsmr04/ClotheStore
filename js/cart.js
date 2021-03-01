@@ -153,13 +153,18 @@ function removeItem(productKey, divId) {
 
 function calculateTotals() {
   const shippingFee = 9.99;
+  const taxPercentage = 13;
+  let taxAmount = 0;
+
   let totalFooter = 0;
+
   
   let subtotalAmount = document.getElementById("subtotalAmount");
   let summarySubtotal = document.getElementById("summarySubtotal");
   let summaryShippingFee = document.getElementById("summaryShippingFee");
   let summaryTaxes = document.getElementById("summaryTaxes");
   let summaryTotal = document.getElementById("summaryTotal");
+  let cartItemCounter = document.getElementById("cartItemCounter");
 
   cartItemList.forEach((i) => {
     let product = shoppingCartProducts.filter(
@@ -175,10 +180,13 @@ function calculateTotals() {
 
   subtotalAmount.innerText = `C${formatter.format(totalFooter)}`;
   //Order Summary
+  taxtAmount = totalFooter * ( taxPercentage / 100);
+
   summarySubtotal.innerText = `C${formatter.format(totalFooter)}`;
   summaryShippingFee.innerText = `C${formatter.format(shippingFee)}`;
-  summaryTaxes.innerText = `C${formatter.format(0)}`;
-  summaryTotal.innerText = `C${formatter.format(totalFooter + shippingFee)}`;
+  summaryTaxes.innerText = `C${formatter.format(taxtAmount)}`;
+  summaryTotal.innerText = `C${formatter.format(totalFooter + shippingFee + taxtAmount)}`;
+  cartItemCounter.innerText = `SubTotal (${cartItemList.length} ${cartItemList.length == 1? 'item':'items'})`;
 }
 
 function updateQuantity(productKey, quantityId, amountId){
@@ -201,7 +209,24 @@ function updateQuantity(productKey, quantityId, amountId){
             cartItem.quantity = quantityInput.value;
             //calculate amount
             amountDiv.innerHTML = `<b>C${formatter.format(cartItem.quantity * product.price)}</b>`;
+
+            //update cookie
+            //VALUE
+            let itemValues = `${cartItem.key}|${cartItem.productId}|${cartItem.size}|${cartItem.quantity}|`;
+             
+            //Set cookie
+            setCookie(cartItem.key, itemValues, 10);
         }
     }
     calculateTotals();
 }
+
+function goToCheckout() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        window.location.href = "checkout.html";
+      } else {
+        window.location.href = "pages/login.html?nextPage=checkout";
+      }
+    });
+  }
