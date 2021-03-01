@@ -40,7 +40,7 @@ function inflateOrderConfirmation(){
             zip.innerHTML = childData["zip"];
             
             tax.innerHTML = "C$" + formatter.format(childData["tax"]);
-            //delivery.innerHTML = "C$" + formatter.format(childData["delivery"]) : "Free";
+            delivery.innerHTML = "C$" + formatter.format(childData["shippingFee"]);
             total.innerHTML = "C$" + formatter.format(childData["total"]);
 
             let items = childData["items"];
@@ -66,7 +66,7 @@ function inflateOrderConfirmation(){
                 divItemDesc.setAttribute("class", "d-flex cont ");
                 divItemDesc1.innerHTML = "Descrip: ";
                 divItemDesc2.setAttribute("class","m-left cont font-weight-bold");
-                divItemDesc2.innerHTML = "productsName";
+                divItemDesc2.innerHTML = i.name;
 
                 divItemDesc.appendChild(divItemDesc1);
                 divItemDesc.appendChild(divItemDesc2);
@@ -95,17 +95,18 @@ function inflateOrderConfirmation(){
                 divItemQt2.innerHTML = i.quantity;
                 divItemPrice.setAttribute("class", "cont font-weight-bold text-dark");
                 divItemPrice.setAttribute("style", "text-align: right;");
-                divItemPrice.innerHTML = "C$" + formatter.format(i.price);
+                divItemPrice.innerHTML = "C$" + formatter.format(i.subtotal);
 
                 divItemQt.appendChild(divItemQt1);
                 divItemQt.appendChild(divItemQt2);
                 divItemQt.appendChild(divItemPrice);
 
-
+                let hr = document.createElement("hr");
                 itemsDiv.appendChild(divItemNum);
                 itemsDiv.appendChild(divItemDesc);
                 itemsDiv.appendChild(divItemSize);
                 itemsDiv.appendChild(divItemQt);
+                itemsDiv.appendChild(hr);
             });
         });
     });
