@@ -106,6 +106,7 @@ function getOrders() {
     //Fill table0.
     fillTable();
   });
+  
 }
 
 function fillTable() {
@@ -142,7 +143,7 @@ function fillTable() {
     }
     
     aShipping.innerHTML = `${ol.order.status}`;
-    aShipping.innerHTML = `${ol.order.address}, ${ol.order.state}, ${ol.order.zip}. ${ol.order.country}`;
+    aShipping.innerHTML = `${ol.order.address}, ${ol.order.state}, ${ol.order.zip}, ${ol.order.country}`;
     aShipping.setAttribute('onclick', `updateShippingFields(${counter})`);
     tdShippingInfo.appendChild(aShipping);
     tr.appendChild(tdShippingInfo);
@@ -161,6 +162,10 @@ function fillTable() {
     tableBody.appendChild(tr);
 
     counter++;
+  });
+  //This script below enables the Jquery to work properly(search, filter, pagination)
+  $(document).ready(function() {
+    $('#dataTable').DataTable();
   });
 }
 
