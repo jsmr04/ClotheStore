@@ -14,12 +14,12 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 *	Create an account to save personal data
 
 ## Features - Administration
-*	add/remove/modify categories of products
-*	add/remove/modify products
-*	search for a customer information and view their past orders
-*	modify a pending order of a customer
-*	modify the status of the order (pending/completed/ready for shipment/shipped)
-*	check statistics of sales by category and by product (last week, last month, all time, etc)
+*	Add/remove/modify categories of products
+*	Add/remove/modify products
+*	Search for a customer information and view their past orders
+*	Modify a pending order of a customer
+*	Modify the status of the order (pending/completed/ready for shipment/shipped)
+*	Check statistics of sales by category and by product (last week, last month, all time, etc)
 
 ## Built With
 * **CSS Framework:** Bootstrap
