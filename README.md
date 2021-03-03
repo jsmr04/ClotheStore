@@ -2,7 +2,7 @@
 
 This is a college's project for JavaScript Fundamentals course. In this project, I demonstrated al the things I learned through the course. The entire project was built using HTML, CSS and JavaScript.
 
-Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for college purpose.
+ClotheStore is an online store based on HTML, CSS and Javascript, built for college purpose.
 
 ## Features - Online Store
 *	Browse products by category
