@@ -17,7 +17,7 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 *	Add/remove/modify categories of products
 *	Add/remove/modify products
 *	Search for a customer information and view their past orders
-*	Modify a pending order of a customer
+*	Modify a pending orders of a customer
 *	Modify the status of the order (pending/completed/ready for shipment/shipped)
 *	Check statistics of sales by category and by product (last week, last month, all time, etc)
 
@@ -28,3 +28,5 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 * **Authentication:** Firebase's Auth
 
 ## Screenshots
+
+
