@@ -64,3 +64,23 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 ![](/store-images/signup.png)
 
 ## Administration
+**Index**
+![](/store-images/admin-dashboard.png)
+
+**Categories**
+![](/store-images/categories.png)
+
+**Products**
+![](/store-images/products.png)
+![](/store-images/new-product.png)
+
+**Orders**
+![](/store-images/orders.png)
+![](/store-images/detail.png)
+
+**Customers**
+![](/store-images/customers.png)
+
+**Reports**
+![](/store-images/sales-category.png)
+![](/store-images/sales-product.png)
