@@ -41,7 +41,7 @@ function inflateMainShoppingCart() {
       itemImgDiv.setAttribute("class", "item-img mr-3 corner-cel");
       itemImg.setAttribute("class", "rounded-sm mr-3");
       itemImg.setAttribute("style", "object-fit:contain;max-height:200px");
-      itemImg.setAttribute("src", `data:image/png;base64,${product.picture}`);
+      itemImg.setAttribute("src", product.picture.url);
       itemImgDiv.appendChild(itemImg);
 
       //Body

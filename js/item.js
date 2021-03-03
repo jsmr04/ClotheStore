@@ -25,6 +25,8 @@ function getProduct() {
         //productContainer.innerHTML = "";
         products = [];
         snapshot.forEach(function (childSnapshot) {
+          let storage = firebase.storage();
+          let storageRef = storage.ref("pictures");
           let childKey = childSnapshot.key;
           let childData = childSnapshot.val();
 
@@ -82,10 +84,18 @@ function getProduct() {
                 "object-fit:contain;max-height:240px"
               );
 
-              pictureImg.setAttribute(
-                "src",
-                `data:image/png;base64,${p.base64String}`
-              );
+              //Getting image
+              storageRef
+                .child(p.storagePath)
+                .getDownloadURL()
+                .then(function (url) {
+                  pictureImg.setAttribute("src", url);
+                });
+
+              // pictureImg.setAttribute(
+              //   "src",
+              //   `data:image/png;base64,${p.base64String}`
+              // );
 
               carouselDiv.appendChild(pictureImg);
               itemPictures.appendChild(carouselDiv);
@@ -98,7 +108,11 @@ function getProduct() {
 }
 
 function addToCart(goToCheckout) {
-  if (productId != undefined && itemSizeSelected != undefined && itemQuantity.value != '') {
+  if (
+    productId != undefined &&
+    itemSizeSelected != undefined &&
+    itemQuantity.value != ""
+  ) {
     //ITEM KEY
     let itemIndex = getCookie("itemIndex");
     let lastKey;
@@ -126,21 +140,19 @@ function addToCart(goToCheckout) {
 
     console.log("new cookie added: " + getCookie(lastKey));
 
-    if (goToCheckout){
-        window.location.href = "checkout.html";
-    }else{
-        window.location.href = "index.html";
+    if (goToCheckout) {
+      window.location.href = "checkout.html";
+    } else {
+      window.location.href = "index.html";
     }
   }
 }
 
 function selectSize(sizeSelected) {
-  let buyItem = document.getElementById('buyItem');
+  let buyItem = document.getElementById("buyItem");
   itemSizeSelected = sizeSelected;
   console.log(itemSizeSelected);
 
-  buyItem.setAttribute('class', 'btn btn-1 bg-checkout-warning')
-  buyItem.setAttribute('style', '')
-
+  buyItem.setAttribute("class", "btn btn-1 bg-checkout-warning");
+  buyItem.setAttribute("style", "");
 }
-

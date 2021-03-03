@@ -88,7 +88,7 @@ function inflateRightSummary() {
         itemContainerDiv.setAttribute("class", "d-flex cont");
         //Image
         itemImg.setAttribute("style", "object-fit:contain;height: 100px; width:100px;");
-        itemImg.setAttribute("src", `data:image/png;base64,${product.picture}`);
+        itemImg.setAttribute("src", product.picture.url);
         //Body
         itemBodyDiv.setAttribute("class", "flex-column col-div cont text-truncate");
         //Name

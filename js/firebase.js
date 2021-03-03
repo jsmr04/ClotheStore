@@ -7,14 +7,14 @@
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
-    apiKey: "AIzaSyD-uX9P8w2g7UZBLHXXB1m-4By0UwoqEY0",
-    authDomain: "onlinestore-b2293.firebaseapp.com",
-    databaseURL: "https://onlinestore-b2293-default-rtdb.firebaseio.com",
-    projectId: "onlinestore-b2293",
-    storageBucket: "onlinestore-b2293.appspot.com",
-    messagingSenderId: "1044761175154",
-    appId: "1:1044761175154:web:b7a15b863d35d7cf564eeb",
-    measurementId: "G-NE6ZW9YZ44",
+    apiKey: "AIzaSyDcB0CQFIgzUeIMOow8oP9Gnf7qRfy4BRM",
+    authDomain: "clothestore-484a8.firebaseapp.com",
+    databaseURL: "https://clothestore-484a8-default-rtdb.firebaseio.com",
+    projectId: "clothestore-484a8",
+    storageBucket: "clothestore-484a8.appspot.com",
+    messagingSenderId: "521700687251",
+    appId: "1:521700687251:web:4bb8ebe4caa43e42ce3c66",
+    measurementId: "G-3LNCC7WFPF"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
