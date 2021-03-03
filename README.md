@@ -36,7 +36,7 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 ![](/store-images/filter.png)
 
 **Item detail**
-![](/store-images/item.png)
+![](/store-images/item-detail.png)
 
 **Add to Cart**
 ![](/store-images/add-to-cart.png)
