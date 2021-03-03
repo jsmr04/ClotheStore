@@ -28,5 +28,6 @@ Spanish Quiz is a A online store based on HTML, CSS and Javascript, built for co
 * **Authentication:** Firebase's Auth
 
 ## Screenshots
-
+## Online Store
+![](/store-images/index.png)
 
