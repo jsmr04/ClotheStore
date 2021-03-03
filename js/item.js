@@ -140,10 +140,23 @@ function addToCart(goToCheckout) {
 
     console.log("new cookie added: " + getCookie(lastKey));
 
+<<<<<<< HEAD
     if (goToCheckout) {
       window.location.href = "checkout.html";
     } else {
       window.location.href = "index.html";
+=======
+    if (goToCheckout){
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          window.location.href = "checkout.html";
+        } else {
+          window.location.href = "pages/login.html?nextPage=checkout";
+        }
+      });
+    }else{
+        window.location.href = "index.html";
+>>>>>>> 17584470d6da0ab7cd1624805e1134f2d9d56a4d
     }
   }
 }
