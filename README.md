@@ -27,8 +27,8 @@ ClotheStore is an online store based on HTML, CSS and Javascript, built for coll
 * **Storage:** Firebase's Storage
 * **Authentication:** Firebase's Auth
 
-## Screenshots
-## Online Store
+## Screenshots - Online Store
+
 **Index**
 ![](/store-images/index.png)
 
@@ -64,7 +64,7 @@ ClotheStore is an online store based on HTML, CSS and Javascript, built for coll
 ![](/store-images/signin.png)
 ![](/store-images/signup.png)
 
-## Administration
+## Screenshots - Administration
 **Index**
 ![](/store-images/admin-dashboard.png)
 
