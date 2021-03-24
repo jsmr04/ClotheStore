@@ -1,7 +1,5 @@
 # ClotheStore
 
-This is a college's project for JavaScript Fundamentals course. In this project, I demonstrated all the things I learned through the course.
-
 ClotheStore is an online store based on HTML, CSS and Javascript, built for college purpose.
 
 ## Features - Online Store
